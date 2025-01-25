@@ -1,0 +1,33 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/Literata_18pt-Bold.ttf",
+      "sha1": "d0224956a6573bc3cfca31858ea99c6b4fb03c26"
+    },
+    {
+      "path": "src/assets/fonts/Literata_18pt-Italic.ttf",
+      "sha1": "689eb596ad8f2a65a8a771a170810d21efa84dfd"
+    },
+    {
+      "path": "src/assets/fonts/Literata_18pt-Regular.ttf",
+      "sha1": "0d391412e3b944603d76117c545e2577b869d0a2"
+    },
+    {
+      "path": "src/assets/fonts/PlayfairDisplay-Bold.ttf",
+      "sha1": "fb74d7e889a2c24dc08d5b931c620d47e607d11a"
+    },
+    {
+      "path": "src/assets/fonts/PlayfairDisplay-Italic.ttf",
+      "sha1": "dd11369827ff1e0ba4071a275c5b3645b1ce6486"
+    },
+    {
+      "path": "src/assets/fonts/PlayfairDisplay-Regular.ttf",
+      "sha1": "96a2e660869a872971935d18105d64eadd693ddb"
+    },
+    {
+      "path": "src/assets/fonts/PlayfairDisplay-SemiBold.ttf",
+      "sha1": "b50e2c15ddb338b15f08df6c2c37ce35f698148f"
+    }
+  ]
+}
