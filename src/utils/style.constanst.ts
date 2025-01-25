@@ -5,7 +5,7 @@ export const {height} = Dimensions.get('screen')
 
 export const redColor = '#CD2028'
 export const blueColor = '#1B2651'
-export const whiteColor = 'white'
+export const whiteColor = '#FFFFFF'
 
 export const titleRegular = 'PlayfairDisplay-Regular'
 export const titleSemiBold = 'PlayfairDisplay-SemiBold'
