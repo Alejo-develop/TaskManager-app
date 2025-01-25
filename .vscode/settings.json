@@ -2,6 +2,7 @@
     "conventionalCommits.scopes": [
         "Build Project",
         "Onboarding",
-        "Login Screen"
+        "Login Screen",
+        "Sign Up screen"
     ]
 }

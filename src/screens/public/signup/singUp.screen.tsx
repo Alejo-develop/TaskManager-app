@@ -28,7 +28,7 @@ const SignUpScreen = () => {
         <ButtonComponent backgroundColor={blueColor} text="Sign Up" />
 
         <View>
-          <Text style={styles.textFooter}>Don’t have account yet?</Text>
+          <Text style={styles.textFooter}>Already have an account?</Text>
           <TouchableOpacity onPress={goToLogin}>
             <Text style={styles.buttonText}>Sign Up</Text>
           </TouchableOpacity>
