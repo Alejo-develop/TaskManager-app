@@ -7,8 +7,8 @@ const FormSignUpComponent = () => {
     <View style={{gap: height * 0.04}}>
       <InputComponent
         color={blueColor}
-        placeholder="Email..."
-        value="Email"
+        placeholder="Name..."
+        value="Name"
         entry={true}
       />
       <InputComponent
