@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     color: 'black',
     textAlign: 'center',
     fontFamily: literataBold,
-    fontSize: height * 0.018,
+    fontSize: height * 0.015,
     width: width * 0.75,
   },
 });

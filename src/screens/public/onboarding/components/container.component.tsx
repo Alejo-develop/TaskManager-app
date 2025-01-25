@@ -57,13 +57,13 @@ const styles = StyleSheet.create({
   },
   children: {
     width: width * 1,
-    height: height * 0.73,
+    height: height * 0.71,
     alignItems: 'center',
     justifyContent: 'center'
   },
   footer: {
     width: width * 1,
-    height: height * 0.04,
+    height: height * 0.05,
     backgroundColor: redColor,
     flexDirection: 'row',
     justifyContent: 'space-around',

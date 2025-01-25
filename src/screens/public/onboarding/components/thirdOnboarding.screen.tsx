@@ -21,10 +21,10 @@ const ThirdOnboardingScreen = () => {
         <Text style={{color: blueColor}}>success!</Text>
       </Text>
       <Text style={styles.text}>
-        You will be able to <Text style={{color: blueColor}}>create</Text>{' '}
-        <Text style={{color: redColor}}>habits</Text> as well as{' '}
-        <Text style={{color: blueColor}}>register</Text>{' '}
-        <Text style={{color: redColor}}>goals</Text> and{' '}
+        You will be able to <Text style={{color: blueColor}}>create</Text>
+        <Text style={{color: redColor}}>habits</Text> as well as
+        <Text style={{color: blueColor}}>register</Text>
+        <Text style={{color: redColor}}>goals</Text> and
         <Text style={{color: redColor}}>challenges</Text> for yourself!
       </Text>
     </ContainerPageComponent>
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     color: 'black',
     textAlign: 'center',
     fontFamily: literataBold,
-    fontSize: height * 0.01,
+    fontSize: height * 0.014,
     width: width * 0.75,
     marginBottom: 20
   },

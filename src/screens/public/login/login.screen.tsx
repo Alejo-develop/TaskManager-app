@@ -1,11 +1,14 @@
 import {Image, ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import styles from './styles';
 import {blueColor, redColor} from '../../../utils/style.constanst';
-import FormLoginComponent from './components/form.component';
+import FormLoginComponent from './components/formLogin.component';
 import ButtonComponent from '../../../components/button/button.component';
 import {imgOnboarding} from '../../../utils/img.constanst';
+import LoginHook from './hook/login.hook';
 
 const LoginScreen = () => {
+  const {goToSignUp} = LoginHook()
+
   return (
     <ScrollView
       contentContainerStyle={styles.container}
@@ -26,7 +29,7 @@ const LoginScreen = () => {
 
         <View>
           <Text style={styles.textFooter}>Don’t have account yet?</Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={goToSignUp}>
             <Text style={styles.buttonText}>Sign Up</Text>
           </TouchableOpacity>
         </View>
