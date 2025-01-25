@@ -9,12 +9,12 @@ const PublicStacks = () => {
   return (
     <Stack.Navigator initialRouteName="onboarding">
       <Stack.Screen
-        name="login"
+        name="Login"
         component={LoginScreen}
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="singup"
+        name="SignUp"
         component={SignUpScreen}
         options={{headerShown: false}}
       />

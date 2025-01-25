@@ -1,5 +1,6 @@
 {
     "conventionalCommits.scopes": [
-        "Build Project"
+        "Build Project",
+        "Onboarding"
     ]
 }

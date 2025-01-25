@@ -1,4 +1,4 @@
-import {Image, StyleSheet, Text} from 'react-native';
+import {Image, StyleSheet, Text, View} from 'react-native';
 import ContainerPageComponent from './container.component';
 import {imgOnboarding} from '../../../../utils/img.constanst';
 import {
@@ -17,7 +17,7 @@ const ThirdOnboardingScreen = () => {
       <Text style={styles.text}>
         In <Text style={{color: redColor}}>Task</Text>{' '}
         <Text style={{color: blueColor}}>Manager</Text> you will have everything
-        you need to manage your way to{' '}
+        you need to manage your way to
         <Text style={{color: blueColor}}>success!</Text>
       </Text>
       <Text style={styles.text}>
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     color: 'black',
     textAlign: 'center',
     fontFamily: literataBold,
-    fontSize: height * 0.016,
+    fontSize: height * 0.01,
     width: width * 0.75,
     marginBottom: 20
   },

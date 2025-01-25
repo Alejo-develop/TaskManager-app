@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     width: width * 1,
-    height: height * 0.03,
+    height: height * 0.04,
     backgroundColor: redColor,
     flexDirection: 'row',
     justifyContent: 'space-around',
