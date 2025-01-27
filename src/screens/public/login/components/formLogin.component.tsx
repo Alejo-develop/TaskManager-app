@@ -4,8 +4,13 @@ import {
   redColor,
 } from '../../../../utils/style.constanst';
 import InputComponent from '../../../../components/input/input.component';
+import { LoginRequest } from '../../../../../core/domain/entities/user/request/loginRequest';
 
-const FormLoginComponent = () => {
+interface FormLoginProps{
+  hanldeFormChange: (field: keyof LoginRequest, value: string) => void;
+}
+
+const FormLoginComponent = ({hanldeFormChange}: FormLoginProps) => {
   return (
     <View style={{gap: height * 0.04}}>
       <InputComponent
@@ -13,12 +18,14 @@ const FormLoginComponent = () => {
         placeholder="Email..."
         value="Email"
         entry={true}
+        onChangeText={text => hanldeFormChange('email', text)}
       />
       <InputComponent
         color={redColor}
         placeholder="Password..."
         value="Password"
         entry={true}
+        onChangeText={text => hanldeFormChange('password', text)}
       />
     </View>
   );

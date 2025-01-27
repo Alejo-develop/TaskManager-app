@@ -25,7 +25,7 @@ const LoginScreen = () => {
       </View>
 
       <View style={styles.containerInputs}>
-        <FormLoginComponent />
+        <FormLoginComponent hanldeFormChange={handleFormChange} />
         <ButtonComponent
           setLoading={loading}
           onPress={() => login(form)}
