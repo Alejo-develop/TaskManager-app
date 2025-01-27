@@ -3,6 +3,7 @@
         "Build Project",
         "Onboarding",
         "Login Screen",
-        "Sign Up screen"
+        "Sign Up screen",
+        "Auth"
     ]
 }
