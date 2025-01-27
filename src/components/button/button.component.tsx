@@ -2,11 +2,12 @@ import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {ButtonProps} from '../../interface/button.pops';
 import {height, literataBold, width} from '../../utils/style.constanst';
 
-const ButtonComponent = ({text, backgroundColor, onPress}: ButtonProps) => {
+const ButtonComponent = ({text, backgroundColor, setLoading, onPress}: ButtonProps) => {
   return (
     <TouchableOpacity
       onPress={onPress}
-      style={[styles.button, {backgroundColor: backgroundColor}]}>
+      style={[styles.button, {backgroundColor: backgroundColor}]}
+      disabled={setLoading}>
       <Text style={styles.text}>{text}</Text>
     </TouchableOpacity>
   );

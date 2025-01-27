@@ -7,7 +7,8 @@ import {imgOnboarding} from '../../../utils/img.constanst';
 import LoginHook from './hook/login.hook';
 
 const LoginScreen = () => {
-  const {goToSignUp} = LoginHook()
+  const {form, loading, errMessage, login, handleFormChange, goToSignUp} =
+    LoginHook();
 
   return (
     <ScrollView
@@ -25,7 +26,12 @@ const LoginScreen = () => {
 
       <View style={styles.containerInputs}>
         <FormLoginComponent />
-        <ButtonComponent backgroundColor={redColor} text="Login" />
+        <ButtonComponent
+          setLoading={loading}
+          onPress={() => login(form)}
+          backgroundColor={redColor}
+          text="Login"
+        />
 
         <View>
           <Text style={styles.textFooter}>Don’t have account yet?</Text>
