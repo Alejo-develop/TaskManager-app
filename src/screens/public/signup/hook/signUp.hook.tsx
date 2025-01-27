@@ -53,6 +53,7 @@ const SignUpHook = () => {
         position: 'bottom',
       })
       setLoading(false)
+      goToLogin()
     } catch (err: any) {
       AlertMessageComponent({
         type: 'error',
