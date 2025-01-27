@@ -4,6 +4,7 @@ import {useNavigation} from '@react-navigation/native';
 import {useState} from 'react';
 import {LoginRequest} from '../../../../../core/domain/entities/user/request/loginRequest';
 import { UserController } from '../../../../../core/infrastructure/controllers/user.controller';
+import AlertMessageComponent from '../../../../components/alertMessage/alertMessage.component';
 
 const LoginHook = () => {
   const goTo = useNavigation<NativeStackNavigationProp<NavigationRoutes>>();
@@ -27,17 +28,31 @@ const LoginHook = () => {
 
   const login = async (form: LoginRequest) => {
     setLoading(true);
+    setErrMessage('')
 
     if (!form.email || !form.password) {
       setErrMessage('All inputs are required');
+      setLoading(false);
       return;
     }
 
     try {
       const {data, message} = await UserController.Login(form)
-
+      AlertMessageComponent({
+        type: 'success',
+        text1: 'Login Success',
+        text2: message,
+        position: 'bottom',
+      })
       setLoading(false);
-    } catch (err) {
+    } catch (err: any) {
+      AlertMessageComponent({
+        type: 'error',
+        text1: 'Error',
+        text2:  err,
+        position: 'bottom',
+      })
+      setErrMessage(err)
       setLoading(false);
     }
   };
