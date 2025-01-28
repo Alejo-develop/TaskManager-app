@@ -1,13 +1,20 @@
 import {StyleSheet, Text, View} from 'react-native';
+import { height, width } from '../../utils/style.constanst';
 
 const toastConfig = {
-  alertMessage: ({text1, text2, props}: any) => (
-   <View></View>
+  tomatoToast: ({text1, text2, props}: any) => (
+   <View style={styles.container}>
+   
+   </View>
   ),
 };
 
 const styles = StyleSheet.create({
- 
+ container:{
+  width: width * 0.7,
+  height: height * 0.1,
+  backgroundColor: 'yellow'
+ }
 });
 
 export default toastConfig;

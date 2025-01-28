@@ -25,6 +25,7 @@ const LoginScreen = () => {
       </View>
 
       <View style={styles.containerInputs}>
+        {errMessage && (<View><Text style={styles.errorMessage}>{errMessage}</Text></ View>)}
         <FormLoginComponent hanldeFormChange={handleFormChange} />
         <ButtonComponent
           setLoading={loading}

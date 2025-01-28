@@ -3,6 +3,7 @@ import {
   blueColor,
   height,
   literataBold,
+  literataItalic,
   literataRegular,
   redColor,
   titleBold,
@@ -53,6 +54,10 @@ const styles = StyleSheet.create({
     color: redColor,
     fontFamily: literataBold,
     textAlign: 'center'
+  },
+  errorMessage: {
+    fontFamily: literataItalic,
+    color: whiteColor,
   }
 });
 

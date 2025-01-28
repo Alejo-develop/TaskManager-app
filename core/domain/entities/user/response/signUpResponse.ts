@@ -1,4 +1,9 @@
 export interface SignUpResponse {
-    code: number;
     message: string;
+  }
+
+  export interface SignUpErrorResponse {
+    message: string;
+    error: string;
+    statusCode: number;
   }

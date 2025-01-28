@@ -1,8 +1,9 @@
 import {StyleSheet} from 'react-native';
 import {
-    blueColor,
+  blueColor,
   height,
   literataBold,
+  literataItalic,
   literataRegular,
   redColor,
   titleBold,
@@ -53,6 +54,10 @@ const styles = StyleSheet.create({
     color: blueColor,
     fontFamily: literataBold,
     textAlign: 'center',
+  },
+  errorMessage: {
+    fontFamily: literataItalic,
+    color: whiteColor,
   },
 });
 

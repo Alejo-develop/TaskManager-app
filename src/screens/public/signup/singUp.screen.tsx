@@ -33,9 +33,14 @@ const SignUpScreen = () => {
       </View>
 
       <View style={styles.containerInputs}>
-        <FormSignUpComponent 
-        hanldeFormChange={handleFormChange}
-        setRepeatPassword={setRepeatPassword}
+        {errMessage && (
+          <View>
+            <Text style={styles.errorMessage}>{errMessage}</Text>
+          </View>
+        )}
+        <FormSignUpComponent
+          hanldeFormChange={handleFormChange}
+          setRepeatPassword={setRepeatPassword}
         />
         <ButtonComponent
           backgroundColor={blueColor}

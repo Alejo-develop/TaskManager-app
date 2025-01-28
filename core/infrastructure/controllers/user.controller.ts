@@ -13,7 +13,7 @@ export class UserController {
       const response = await LoginUser(userRepository_, data);
       return response;
     } catch (error) {
-      throw new Error('Failed to log in. Please check your credentials.');
+      throw  error
     }
   }
 
@@ -22,7 +22,7 @@ export class UserController {
       const response = await SingUpUser(userRepository_, data);
       return response;
     } catch (error) {
-      throw new Error('Failed to log in. Please check your credentials.');
+      throw error
     }
   }
 }

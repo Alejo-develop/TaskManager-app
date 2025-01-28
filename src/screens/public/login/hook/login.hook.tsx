@@ -30,14 +30,21 @@ const LoginHook = () => {
     setLoading(true);
     setErrMessage('')
 
+    if(form.password.length < 8){
+      setErrMessage('The password must be at least 8 characters long');  
+      setLoading(false);
+      return
+    }
+
     if (!form.email || !form.password) {
-      setErrMessage('All inputs are required');
+      setErrMessage('All inputs are required');  
       setLoading(false);
       return;
     }
-
+    
     try {
       const {data, message} = await UserController.Login(form)
+      
       AlertMessageComponent({
         type: 'success',
         text1: 'Login Success',
@@ -45,14 +52,13 @@ const LoginHook = () => {
         position: 'bottom',
       })
       setLoading(false);
-    } catch (err: any) {
-      AlertMessageComponent({
-        type: 'error',
-        text1: 'Error',
-        text2:  err,
-        position: 'bottom',
-      })
-      setErrMessage(err)
+    } catch (err: any) {    
+      if(typeof err === 'string'){
+        setErrMessage(err)
+        setLoading(false);
+        return
+      }
+      setErrMessage('Unexpected error ocurred')
       setLoading(false);
     }
   };
