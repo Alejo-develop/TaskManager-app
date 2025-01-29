@@ -4,6 +4,7 @@
         "Onboarding",
         "Login Screen",
         "Sign Up screen",
-        "Auth"
+        "Auth",
+        "Alert Message"
     ]
 }
