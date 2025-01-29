@@ -24,7 +24,7 @@ const FormLoginComponent = ({hanldeFormChange}: FormLoginProps) => {
         color={redColor}
         placeholder="Password..."
         value="Password"
-        entry={true}
+        entry={false}
         onChangeText={text => hanldeFormChange('password', text)}
       />
     </View>

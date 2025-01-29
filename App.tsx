@@ -15,7 +15,6 @@ const App = () => {
         <Router />
         <Toast config={toastConfig}/>
       </PersistGate>
-      <Router />
     </Provider>
   );
 };

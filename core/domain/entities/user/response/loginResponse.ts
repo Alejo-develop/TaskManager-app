@@ -1,7 +1,6 @@
 export interface LoginResponse {
   message: string;
   data: {
-    id: string;
     accessToken: string;
   };
 }
