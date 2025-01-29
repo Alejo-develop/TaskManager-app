@@ -17,14 +17,14 @@ const FormLoginComponent = ({hanldeFormChange}: FormLoginProps) => {
         color={redColor}
         placeholder="Email..."
         value="Email"
-        entry={true}
+        entry={false}
         onChangeText={text => hanldeFormChange('email', text)}
       />
       <InputComponent
         color={redColor}
         placeholder="Password..."
         value="Password"
-        entry={false}
+        entry={true}
         onChangeText={text => hanldeFormChange('password', text)}
       />
     </View>

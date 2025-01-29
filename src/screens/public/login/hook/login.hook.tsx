@@ -6,9 +6,13 @@ import {LoginRequest} from '../../../../../core/domain/entities/user/request/log
 import {UserController} from '../../../../../core/infrastructure/controllers/user.controller';
 import AlertMessageComponent from '../../../../components/alertMessage/alertMessage.component';
 import {useDispatch, UseDispatch} from 'react-redux';
-import { setSession } from '../../../../redux/user.slice';
-import { PayloadInterface, SessionInfoInterface } from '../../../../interface/auth.interface';
-import { extractPayload } from '../../../../services/jsonwebtoken.servies';
+import {setSession} from '../../../../redux/user.slice';
+import {
+  PayloadInterface,
+  SessionInfoInterface,
+} from '../../../../interface/auth.interface';
+import {extractPayload} from '../../../../services/jsonwebtoken.servies';
+import {LoginErrorResponse} from '../../../../../core/domain/entities/user/response/loginResponse';
 
 const LoginHook = () => {
   const goTo = useNavigation<NativeStackNavigationProp<NavigationRoutes>>();
@@ -19,7 +23,7 @@ const LoginHook = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [errMessage, setErrMessage] = useState<string>();
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleFormChange = (field: keyof LoginRequest, value: string) => {
     setForm(prevForm => ({
@@ -49,26 +53,41 @@ const LoginHook = () => {
     }
 
     try {
-      const {data, message} = await UserController.Login(form);
-      const {accessToken} = data
-      
-      const payload = extractPayload(accessToken) as PayloadInterface
+      const response = await UserController.Login(form);
 
-      const sessionInfo: SessionInfoInterface = {
-        id: payload.id,
-        name: payload.name,
-        email: payload.email,
-        token: accessToken,
-        isAuthenticated: true
+      if ('data' in response) {
+        const {data, message} = response;
+        const {accessToken} = data;
+
+        const payload = extractPayload(accessToken) as PayloadInterface;
+
+        if (!payload) {
+          setErrMessage('Failed to decode token');
+          setLoading(false);
+          return;
+        }
+
+        const sessionInfo: SessionInfoInterface = {
+          id: payload.id,
+          name: payload.name,
+          email: payload.email,
+          token: accessToken,
+          isAuthenticated: true,
+        };
+
+        dispatch(setSession(sessionInfo));
+
+        AlertMessageComponent({
+          type: 'success',
+          text1: 'Success',
+          text2: message,
+          position: 'bottom',
+        });
+      } else {
+        const {message} = response as LoginErrorResponse;
+        setErrMessage(message || 'Unexpected error occurred');
       }
 
-      dispatch(setSession(sessionInfo))
-      AlertMessageComponent({
-        type: 'success',
-        text1: 'Login Success',
-        text2: message,
-        position: 'bottom',
-      });
       setLoading(false);
     } catch (err: any) {
       if (typeof err === 'string') {
@@ -76,7 +95,7 @@ const LoginHook = () => {
         setLoading(false);
         return;
       }
-      setErrMessage('Unexpected error ocurred');
+      setErrMessage('Unexpected error occurred');
       setLoading(false);
     }
   };

@@ -15,28 +15,28 @@ const FormSignUpComponent = ({hanldeFormChange, setRepeatPassword}: FormSignUpPr
         color={blueColor}
         placeholder="Name..."
         value="Name"
-        entry={true}
+        entry={false}
         onChangeText={text => hanldeFormChange('name', text)}
       />
       <InputComponent
         color={blueColor}
         placeholder="Email..."
         value="Email"
-        entry={true}
+        entry={false}
         onChangeText={text => hanldeFormChange('email', text)}
       />
       <InputComponent
         color={blueColor}
         placeholder="Password..."
         value="Password"
-        entry={false}
+        entry={true}
         onChangeText={text => hanldeFormChange('password', text)}
       />
       <InputComponent
         color={blueColor}
         placeholder="Repeat Password..."
         value="Repeat Password"
-        entry={false}
+        entry={true}
         onChangeText={setRepeatPassword}
       />
     </View>

@@ -54,7 +54,7 @@ const SignUpHook = () => {
       await UserController.SignUp(form);
       AlertMessageComponent({
         type: 'success',
-        text1: 'Sign Up Success',
+        text1: 'Success',
         text2: 'Your account has been created successfully',
         position: 'bottom',
       });

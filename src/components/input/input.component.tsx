@@ -67,6 +67,7 @@ const InputComponent = ({placeholder, entry, color, value, keyBoardPad, onChange
         focusable={true}
         onFocus={handleFocus}
         onBlur={handleBlur}
+        secureTextEntry={entry}
       />
     </View>
   );
