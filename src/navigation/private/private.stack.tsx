@@ -7,7 +7,7 @@ const Stack = createNativeStackNavigator();
 
 const PrivateStacks = () => {
   return (
-    <Stack.Navigator initialRouteName="Home">
+    <Stack.Navigator initialRouteName="home">
       <Stack.Screen
         name="home"
         component={HomeScreen}
