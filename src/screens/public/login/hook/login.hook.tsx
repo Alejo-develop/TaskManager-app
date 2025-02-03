@@ -5,7 +5,7 @@ import {useState} from 'react';
 import {LoginRequest} from '../../../../../core/domain/entities/user/request/loginRequest';
 import {UserController} from '../../../../../core/infrastructure/controllers/user.controller';
 import AlertMessageComponent from '../../../../components/alertMessage/alertMessage.component';
-import {useDispatch, UseDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {setSession} from '../../../../redux/user.slice';
 import {
   PayloadInterface,

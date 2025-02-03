@@ -11,6 +11,7 @@ export class UserController {
   static async Login(data: LoginRequest): Promise<LoginResponse | LoginErrorResponse> {
     try {
       const response = await LoginUser(userRepository_, data);
+
       return response;
     } catch (error) {
       throw  error
