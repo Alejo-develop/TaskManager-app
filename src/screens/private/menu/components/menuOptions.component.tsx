@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Image, StyleSheet} from 'react-native';
 import {Text, View} from 'react-native';
 import {
   blueColor,
@@ -8,6 +8,7 @@ import {
   width,
 } from '../../../../utils/style.constanst';
 import ButtonMenuComponent from './buttonMenu.component';
+import {imgOnboarding} from '../../../../utils/img.constanst';
 
 const MenuOptionComponent = () => {
   return (
@@ -20,7 +21,18 @@ const MenuOptionComponent = () => {
           <ButtonMenuComponent text="Create new Challenge" />
           <ButtonMenuComponent text="Change your Info" />
         </View>
-        <View></View>
+        <View
+          style={[
+            {
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: width * 0.42,
+              height: height * 0.28,
+              paddingBottom: 4
+            },
+          ]}>
+          <Image source={{uri: imgOnboarding.angel}} style={styles.img} />
+        </View>
       </View>
     </View>
   );
@@ -45,8 +57,12 @@ const styles = StyleSheet.create({
     height: height * 0.28,
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 15
-  }
+    gap: 15,
+  },
+  img: {
+    height: height * 0.23,
+    width: width * 0.32,
+  },
 });
 
 export default MenuOptionComponent;
