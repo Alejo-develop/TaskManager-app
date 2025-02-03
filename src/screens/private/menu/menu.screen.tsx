@@ -1,9 +1,10 @@
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
+import MenuOptionComponent from './components/menuOptions.component';
 
 const MenuScreen = () => {
   return (
     <View>
-      <Text style={{color: 'black'}}>Hola desde Menu</Text>
+      <MenuOptionComponent />
     </View>
   );
 };
