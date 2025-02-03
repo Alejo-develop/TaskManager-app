@@ -9,3 +9,9 @@ export interface ButtonMenuProps {
   text: string;
   onPress?: () => void;
 }
+
+export interface ButtonCategorieProps {
+  text: string;
+  img: string;
+  onPress?: () => void;
+}
