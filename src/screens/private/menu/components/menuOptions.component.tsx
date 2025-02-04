@@ -12,9 +12,11 @@ import {
 import ButtonMenuComponent from './buttonMenu.component';
 import {imgOnboarding} from '../../../../utils/img.constanst';
 import UseOptionMenu from '../hook/useOptionMenu.hook';
+import InfoUserModal from './infoUser.modal';
 
 const MenuOptionComponent = () => {
-  const {sentence, navigate} = UseOptionMenu()
+  const {sentence, isModalInfoUserVisible, setIsModaInfolUser, navigate} =
+    UseOptionMenu();
 
   return (
     <View style={styles.container}>
@@ -22,10 +24,19 @@ const MenuOptionComponent = () => {
 
       <View style={[{flexDirection: 'row'}]}>
         <View style={styles.containerButtons}>
-          <ButtonMenuComponent text="Create new Habit" onPress={() => navigate('habit')}/>
-          <ButtonMenuComponent text="Make new Purpose" onPress={() => navigate('purpose')}/>
-          <ButtonMenuComponent text="Create new Challenge" onPress={() => navigate('challenge')}/>
-          <ButtonMenuComponent text="Change your Info" />
+          <ButtonMenuComponent
+            text="Create new Habit"
+            onPress={() => navigate('habit')}
+          />
+          <ButtonMenuComponent
+            text="Make new Purpose"
+            onPress={() => navigate('purpose')}
+          />
+          <ButtonMenuComponent
+            text="Create new Challenge"
+            onPress={() => navigate('challenge')}
+          />
+          <ButtonMenuComponent text="Change your Info" onPress={() => setIsModaInfolUser(true)}/>
         </View>
         <View
           style={[
@@ -44,6 +55,11 @@ const MenuOptionComponent = () => {
       <View style={styles.containerSentence}>
         <Text style={styles.sentence}>{sentence}</Text>
       </View>
+
+      <InfoUserModal 
+      isVisible={isModalInfoUserVisible}
+      onClose={() => setIsModaInfolUser(false)}
+      />
     </View>
   );
 };
@@ -83,15 +99,15 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     elevation: 6,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   sentence: {
     color: blueColor,
     textAlign: 'center',
     fontFamily: literataItalic,
-    fontSize: 10, 
-    width: width *  0.6
-  }
+    fontSize: 10,
+    width: width * 0.6,
+  },
 });
 
 export default MenuOptionComponent;
