@@ -4,6 +4,7 @@ import MenuScreen from '../../screens/private/menu/menu.screen';
 import StaticsScreen from '../../screens/private/statistics/statics.screen';
 import MainScreen from '../../screens/private/main.screen';
 import CreateItemScreen from '../../screens/private/createItem/createItem.screen';
+import SeeItemByCategorieScreen from '../../screens/private/seeItems/seeItemByCategorie.screen';
 
 const Stack = createNativeStackNavigator();
 
@@ -33,6 +34,11 @@ const PrivateStacks = () => {
       <Stack.Screen
         name="createItem"
         component={CreateItemScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="seeItemByCategorie"
+        component={SeeItemByCategorieScreen}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

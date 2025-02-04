@@ -1,17 +1,37 @@
 import {StyleSheet, Text, View} from 'react-native';
-import {blueColor, height, literataBold, width} from '../../../../utils/style.constanst';
+import {
+  blueColor,
+  height,
+  literataBold,
+  width,
+} from '../../../../utils/style.constanst';
 import CategorieButtonComponent from './buttonCategorie.component';
-import { imgOnboarding } from '../../../../utils/img.constanst';
+import {imgOnboarding} from '../../../../utils/img.constanst';
+import UseCategorieSection from '../hook/useCateogireSection.hook';
 
 const CategorieSectionComponent = () => {
+  const {navigate} = UseCategorieSection();
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Categories</Text>
 
       <View style={styles.containerButtos}>
-        <CategorieButtonComponent text='Purposes' img={imgOnboarding.candle}/>
-        <CategorieButtonComponent text='Habits' img={imgOnboarding.crown}/>
-        <CategorieButtonComponent text='Challenges' img={imgOnboarding.mirror}/>
+        <CategorieButtonComponent
+          text="Purposes"
+          img={imgOnboarding.candle}
+          onPress={() => navigate('purposes')}
+        />
+        <CategorieButtonComponent
+          text="Habits"
+          img={imgOnboarding.crown}
+          onPress={() => navigate('habits')}
+        />
+        <CategorieButtonComponent
+          text="Challenges"
+          img={imgOnboarding.mirror}
+          onPress={() => navigate('challenges')}
+        />
       </View>
     </View>
   );
@@ -27,7 +47,7 @@ const styles = StyleSheet.create({
   title: {
     color: blueColor,
     fontFamily: literataBold,
-    fontSize: 20
+    fontSize: 20,
   },
   containerButtos: {
     flexDirection: 'row',
