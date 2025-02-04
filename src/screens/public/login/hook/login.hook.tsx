@@ -1,5 +1,5 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {NavigationRoutes} from '../../../../types/navigation.type';
+import {PublicNavigationRoutes} from '../../../../types/navigation.type';
 import {useNavigation} from '@react-navigation/native';
 import {useState} from 'react';
 import {LoginRequest} from '../../../../../core/domain/entities/user/request/loginRequest';
@@ -15,7 +15,7 @@ import {extractPayload} from '../../../../services/jsonwebtoken.servies';
 import {LoginErrorResponse} from '../../../../../core/domain/entities/user/response/loginResponse';
 
 const LoginHook = () => {
-  const goTo = useNavigation<NativeStackNavigationProp<NavigationRoutes>>();
+  const goTo = useNavigation<NativeStackNavigationProp<PublicNavigationRoutes>>();
   const [form, setForm] = useState<LoginRequest>({
     email: '',
     password: '',

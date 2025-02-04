@@ -1,5 +1,5 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {NavigationRoutes} from '../../../../types/navigation.type';
+import {PublicNavigationRoutes} from '../../../../types/navigation.type';
 import {useNavigation} from '@react-navigation/native';
 import {useState} from 'react';
 import {SignUpRequest} from '../../../../../core/domain/entities/user/request/signUpRequest';
@@ -7,7 +7,7 @@ import AlertMessageComponent from '../../../../components/alertMessage/alertMess
 import {UserController} from '../../../../../core/infrastructure/controllers/user.controller';
 
 const SignUpHook = () => {
-  const goTo = useNavigation<NativeStackNavigationProp<NavigationRoutes>>();
+  const goTo = useNavigation<NativeStackNavigationProp<PublicNavigationRoutes>>();
   const [form, setForm] = useState<SignUpRequest>({
     name: '',
     email: '',

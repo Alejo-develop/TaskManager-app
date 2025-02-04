@@ -11,18 +11,10 @@ import {
 } from '../../../../utils/style.constanst';
 import ButtonMenuComponent from './buttonMenu.component';
 import {imgOnboarding} from '../../../../utils/img.constanst';
-import {useEffect, useState} from 'react';
-import {getRandomSentence} from '../../../../services/random.services';
+import UseOptionMenu from '../hook/useOptionMenu.hook';
 
 const MenuOptionComponent = () => {
-  const [sentence, setSentence] = useState<string>('');
-  const getSentence = () => {
-    setSentence(getRandomSentence());
-  };
-
-  useEffect(() => {
-    getSentence();
-  }, [sentence]);
+  const {sentence, navigate} = UseOptionMenu()
 
   return (
     <View style={styles.container}>
@@ -30,9 +22,9 @@ const MenuOptionComponent = () => {
 
       <View style={[{flexDirection: 'row'}]}>
         <View style={styles.containerButtons}>
-          <ButtonMenuComponent text="Create new Habit" />
-          <ButtonMenuComponent text="Make new Purpose" />
-          <ButtonMenuComponent text="Create new Challenge" />
+          <ButtonMenuComponent text="Create new Habit" onPress={() => navigate('habit')}/>
+          <ButtonMenuComponent text="Make new Purpose" onPress={() => navigate('purpose')}/>
+          <ButtonMenuComponent text="Create new Challenge" onPress={() => navigate('challenge')}/>
           <ButtonMenuComponent text="Change your Info" />
         </View>
         <View
