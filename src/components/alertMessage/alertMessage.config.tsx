@@ -35,7 +35,8 @@ const styles = StyleSheet.create({
     borderWidth: 5,
     borderColor: whiteColor,
     elevation: 6,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    marginBottom: height * 0.03
   },
   containerStyle:{
     width: width * 0.139,
