@@ -1,4 +1,5 @@
 import {GetCategoriesServices} from '../../../src/services/categories.services';
+import { FindAllCategoriesRequest } from '../../domain/entities/categories/request/categoryRepuest';
 import {
   FindAllCategoriesResponse,
   FindAllCategoriesErrorResponse,
@@ -6,11 +7,11 @@ import {
 import {CategoryRepository} from '../../domain/interfaces/categories.repository';
 
 export class CategoriesRepositoryImp implements CategoryRepository {
-  async findAll(): Promise<
+  async findAll(data: FindAllCategoriesRequest): Promise<
     FindAllCategoriesResponse | FindAllCategoriesErrorResponse
   > {
     try {
-      return await GetCategoriesServices();
+      return await GetCategoriesServices(data);
     } catch (error) {
       throw error;
     }

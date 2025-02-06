@@ -4,7 +4,7 @@ import FormItemComponent from './components/formItem.component';
 import HeaderItemScreenComponent from './components/headerItemScreen.component';
 
 const CreateItemScreen = () => {
-  const {itemType} = UseCreateItem();
+  const {itemType, categories} = UseCreateItem();
 
   return (
     <View>
@@ -12,6 +12,6 @@ const CreateItemScreen = () => {
       <FormItemComponent itemType={itemType} />
     </View>
   );
-};
+}; 
 
 export default CreateItemScreen;

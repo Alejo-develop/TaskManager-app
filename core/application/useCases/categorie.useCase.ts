@@ -1,3 +1,4 @@
+import { FindAllCategoriesRequest } from '../../domain/entities/categories/request/categoryRepuest';
 import {
   FindAllCategoriesErrorResponse,
   FindAllCategoriesResponse,
@@ -5,7 +6,7 @@ import {
 import {CategoryRepository} from '../../domain/interfaces/categories.repository';
 
 export const FindAllCategories = async (
-  categoriesRepository: CategoryRepository,
+  categoriesRepository: CategoryRepository, data: FindAllCategoriesRequest
 ): Promise<FindAllCategoriesResponse | FindAllCategoriesErrorResponse> => {
-  return categoriesRepository.findAll();
+  return categoriesRepository.findAll(data);
 };
