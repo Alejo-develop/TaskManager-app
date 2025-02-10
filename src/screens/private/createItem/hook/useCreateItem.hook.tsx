@@ -12,7 +12,6 @@ const UseCreateItem = () => {
   const {itemType} = route.params;
 
   const [categories, setCategories] = useState<Category[]>([]);
-  const [idCategorie, setIdCategorie] = useState<string>('')
 
   const getCategories = async () => {
     try {
@@ -39,8 +38,7 @@ const UseCreateItem = () => {
 
   return {
     itemType,
-    categories,
-    setIdCategorie
+    categories
   };
 };
 

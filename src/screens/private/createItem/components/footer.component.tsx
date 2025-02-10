@@ -22,6 +22,7 @@ const FooterCreateItemScreenComponent = ({
       <ButtonComponent
         text={itemType === 'purpose' ? 'Make' : 'Create'}
         backgroundColor={redColor}
+        onPress={onPress}
       />
       <Image source={{uri: imgOnboarding.stamp}} style={styles.img} />
     </View>

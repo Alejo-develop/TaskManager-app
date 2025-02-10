@@ -1,12 +1,11 @@
-import {View, ScrollView} from 'react-native';
+import {ScrollView} from 'react-native';
 import UseCreateItem from './hook/useCreateItem.hook';
 import FormItemComponent from './components/formItem.component';
 import HeaderItemScreenComponent from './components/headerItemScreen.component';
-import FooterCreateItemScreenComponent from './components/footer.component';
 import {height} from '../../../utils/style.constanst';
 
 const CreateItemScreen = () => {
-  const {itemType, categories, setIdCategorie} = UseCreateItem();
+  const {itemType, categories} = UseCreateItem();
 
   return (
     <ScrollView
@@ -16,9 +15,7 @@ const CreateItemScreen = () => {
       <FormItemComponent
         itemType={itemType}
         categories={categories}
-        setId={setIdCategorie}
       />
-      <FooterCreateItemScreenComponent itemType={itemType} />
     </ScrollView>
   );
 };
