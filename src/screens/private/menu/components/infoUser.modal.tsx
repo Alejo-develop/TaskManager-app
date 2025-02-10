@@ -24,7 +24,8 @@ interface InfoUserModalProps {
 }
 
 const InfoUserModal = ({isVisible, onClose}: InfoUserModalProps) => {
-  const {nameUser, emailUser} = UseInfoUserModal();
+  const {nameUser, emailUser, form, handleFormChange, changeInfo} =
+    UseInfoUserModal();
 
   return (
     <Modal
@@ -35,9 +36,9 @@ const InfoUserModal = ({isVisible, onClose}: InfoUserModalProps) => {
       <View style={styles.container}>
         <View style={styles.modal}>
           <View style={{flexDirection: 'row'}}>
-            <TouchableOpacity onPress={onClose} style={{position: 'absolute',
-                left: width * -0.15
-            }}>
+            <TouchableOpacity
+              onPress={onClose}
+              style={{position: 'absolute', left: width * -0.15}}>
               <Image
                 style={styles.img}
                 source={require('../../../../assets/img/arrow-back.png')}
@@ -53,16 +54,18 @@ const InfoUserModal = ({isVisible, onClose}: InfoUserModalProps) => {
               placeholder={`${nameUser}...`}
               entry={false}
               value="Name"
+              onChangeText={text => handleFormChange('name', text)}
             />
             <InputComponent
               color={redColor}
               placeholder={`${emailUser}...`}
               entry={false}
               value="Email"
+              onChangeText={text => handleFormChange('email', text)}
             />
           </View>
 
-          <ButtonComponent text="Change" backgroundColor={redColor} />
+          <ButtonComponent text="Change" backgroundColor={redColor} onPress={() => changeInfo(form)}/>
         </View>
       </View>
     </Modal>

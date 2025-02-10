@@ -5,7 +5,7 @@ import {RootState} from '../redux/store';
 import PrivateStacks from './private/private.stack';
 
 const Router = () => {
-  const statusAuth = useSelector((state: RootState) => state.isAuthenticated);
+  const statusAuth = useSelector((state: RootState) => state.user.isAuthenticated);
 
   return (
     <NavigationContainer>
