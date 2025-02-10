@@ -1,10 +1,7 @@
 import {Category} from '../category';
 
 export interface FindAllCategoriesResponse {
-  message: string;
-  data: {
-    categories: Category[];
-  };
+  data: Category[];
 }
 
 export interface FindAllCategoriesErrorResponse {

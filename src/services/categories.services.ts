@@ -15,9 +15,9 @@ export const GetCategoriesServices = async (data: FindAllCategoriesRequest): Pro
         Authorization: `Bearer ${data.token}`
       }
     });
+    
     return res.data;
   } catch (error: any) {
-    console.log(error);
     if (axios.isAxiosError(error)) {
       const axiosError = error as AxiosError<FindAllCategoriesErrorResponse>;
       if (axiosError.response) {
