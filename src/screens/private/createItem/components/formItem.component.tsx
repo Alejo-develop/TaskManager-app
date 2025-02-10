@@ -1,5 +1,10 @@
 import {StyleSheet, View} from 'react-native';
-import {blueColor, height, redColor} from '../../../../utils/style.constanst';
+import {
+  blueColor,
+  height,
+  redColor,
+  width,
+} from '../../../../utils/style.constanst';
 import InputComponent from '../../../../components/input/input.component';
 import {Category} from '../../../../../core/domain/entities/categories/category';
 import SelectComponent from '../../../../components/select/select.component';
@@ -34,77 +39,91 @@ const FormItemComponent = ({itemType, categories}: FormItemComponentProps) => {
 
   return (
     <View style={styles.containerForm}>
-      <InputComponent
-        placeholder={
-          itemType === `habit`
-            ? `Habit Name...`
-            : itemType === `challenge`
-            ? `Name of Challenge...`
-            : `Purpose Name...`
-        }
-        entry={false}
-        color={redColor}
-        value={
-          itemType === `habit`
-            ? `Habit Name`
-            : itemType === `challenge`
-            ? `Name of Challenge`
-            : `Purpose Name`
-        }
-        onChangeText={text => handleFormChange('name', text)}
-      />
-
-      <InputComponent
-        placeholder="Description..."
-        entry={false}
-        color={redColor}
-        value="Description"
-        onChangeText={text => handleFormChange('description', text)}
-      />
-
-      {isVisibleDatePickerInitial && (
-        <DateTimePicker
-          mode="date"
-          display="spinner"
-          value={date}
-          onChange={selectStartDate}
-        />
-      )}
-
-      {isVisibleEndDatePicker && (
-        <DateTimePicker
-          mode="date"
-          display="spinner"
-          value={endDate}
-          onChange={selectEndDate}
-        />
-      )}
-
-      <SelectComponent data={categories} setId={setIdCategorie} />
-      {(itemType === 'habit' || itemType === 'challenge') && (
+      <View
+        style={{
+          gap: 20,
+          paddingTop: height * 0.03,
+          width: width * 1,
+          alignItems: 'center',
+        }}>
         <InputComponent
-          color={redColor}
+          placeholder={
+            itemType === `habit`
+              ? `Habit Name...`
+              : itemType === `challenge`
+              ? `Name of Challenge...`
+              : `Purpose Name...`
+          }
           entry={false}
-          placeholder="Frecuency..."
-          value="Frecuency"
-          keyBoardPad="decimal-pad"
-          onChangeText={text => setFrecuency(parseInt(text))}
+          color={redColor}
+          value={
+            itemType === `habit`
+              ? `Habit Name`
+              : itemType === `challenge`
+              ? `Name of Challenge`
+              : `Purpose Name`
+          }
+          onChangeText={text => handleFormChange('name', text)}
         />
-      )}
-      {(itemType === 'habit' || itemType === 'challenge') && (
-        <View style={{flexDirection: 'row', gap: 20}}>
-          <ButtonSelectDate
-            text="Start Date"
-            onPress={() =>
-              setIsVisibleDateInitialPicker(!isVisibleDatePickerInitial)
-            }
+
+        <InputComponent
+          placeholder="Description..."
+          entry={false}
+          color={redColor}
+          value="Description"
+          onChangeText={text => handleFormChange('description', text)}
+        />
+
+        {isVisibleDatePickerInitial && (
+          <DateTimePicker
+            mode="date"
+            display="spinner"
+            value={date}
+            onChange={selectStartDate}
           />
-          <ButtonSelectDate
-            text="End Date"
-            onPress={() => setIsVisibleEndDatePicker(!isVisibleEndDatePicker)}
+        )}
+
+        {isVisibleEndDatePicker && (
+          <DateTimePicker
+            mode="date"
+            display="spinner"
+            value={endDate}
+            onChange={selectEndDate}
           />
-        </View>
-      )}
+        )}
+
+        <SelectComponent data={categories} setId={setIdCategorie} />
+        {(itemType === 'habit' || itemType === 'challenge') && (
+          <InputComponent
+            color={redColor}
+            entry={false}
+            placeholder="Frecuency..."
+            value="Frecuency"
+            keyBoardPad="decimal-pad"
+            onChangeText={text => setFrecuency(parseInt(text))}
+          />
+        )}
+        {(itemType === 'habit' || itemType === 'challenge') && (
+          <View
+            style={{
+              flexDirection: 'row',
+              gap: 20,
+              justifyContent: 'center',
+              width: width * 1,
+            }}>
+            <ButtonSelectDate
+              text="Start Date"
+              onPress={() =>
+                setIsVisibleDateInitialPicker(!isVisibleDatePickerInitial)
+              }
+            />
+            <ButtonSelectDate
+              text="End Date"
+              onPress={() => setIsVisibleEndDatePicker(!isVisibleEndDatePicker)}
+            />
+          </View>
+        )}
+      </View>
 
       <FooterCreateItemScreenComponent
         itemType={itemType}
@@ -128,7 +147,7 @@ const styles = StyleSheet.create({
     backgroundColor: blueColor,
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 25,
+    gap: height * 0.05,
   },
 });
 
