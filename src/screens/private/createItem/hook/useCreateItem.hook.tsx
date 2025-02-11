@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../../../redux/store';
 
 const UseCreateItem = () => {
-  const token = useSelector((state: RootState) => state.token)
+  const token = useSelector((state: RootState) => state.user.token)
   const route = useRoute<CreateItemRouteProp>();
   const {itemType} = route.params;
 

@@ -77,16 +77,16 @@ const FormItemComponent = ({itemType, categories}: FormItemComponentProps) => {
         {isVisibleDatePickerInitial && (
           <DateTimePicker
             mode="date"
-            display="spinner"
+            display="compact"
             value={date}
             onChange={selectStartDate}
           />
-        )}
+        )} 
 
         {isVisibleEndDatePicker && (
           <DateTimePicker
             mode="date"
-            display="spinner"
+            display="compact"
             value={endDate}
             onChange={selectEndDate}
           />

@@ -39,10 +39,10 @@ const HeaderSeeItemByCategorieScreen = ({
       />
       <Text style={styles.text}>
         {itemType === `habits`
-          ? `Create new Habit`
+          ? `Habits`
           : itemType === `challenges`
-          ? `Create new Challenge`
-          : `Make new Purpose`}
+          ? `Challenges`
+          : `Purposes`}
       </Text>
     </View>
   );
