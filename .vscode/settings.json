@@ -12,6 +12,7 @@
         "Create item Screen",
         "Info user Modal",
         "See  items by categorie screen",
-        "Categories entity"
+        "Categories entity",
+        "Config DataBase with SQLite"
     ]
 }

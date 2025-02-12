@@ -4,9 +4,10 @@ export const HabitTable = `
     userId TEXT,
     categoryId TEXT NOT NULL,
     name TEXT NOT NULL,
-    img TEXT,
     description TEXT,
     frequency TEXT,
+    startDate: DATE NOT NULL,
+    endDate: DATE NOT NULL,
     streak INTEGER DEFAULT 0,
     createdAt TEXT
   );
