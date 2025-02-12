@@ -81,15 +81,16 @@ const FormItemComponent = ({itemType, categories}: FormItemComponentProps) => {
             value={date}
             onChange={selectStartDate}
           />
-        )} 
+        )}
 
         {isVisibleEndDatePicker && (
-          <DateTimePicker
-            mode="date"
-            display="compact"
-            value={endDate}
-            onChange={selectEndDate}
-          />
+            <DateTimePicker
+              mode="date"
+              display="compact"
+              value={endDate}
+              onChange={selectEndDate}
+              accentColor={redColor}         
+            />
         )}
 
         <SelectComponent data={categories} setId={setIdCategorie} />
