@@ -4,6 +4,6 @@ export interface CreateHabitRequest {
   name: string;
   description?: string;
   frequency: string;
-  startDate: string;
-  endDate: string;
+  startDate: Date;
+  endDate: Date;
 }

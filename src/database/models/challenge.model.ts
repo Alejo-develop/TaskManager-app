@@ -6,8 +6,8 @@ export const ChallengeTable = `
     name TEXT NOT NULL,
     description TEXT,
     frequency TEXT,
-    startDate: DATE NO NULL,
-    endDate: DATE NOT NULL,
+    startDate DATE NO NULL,
+    endDate DATE NOT NULL,
     streak INTEGER DEFAULT 0,
     createdAt TEXT
   );

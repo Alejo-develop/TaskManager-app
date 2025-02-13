@@ -7,16 +7,18 @@ export class HabitRepositoryImp implements HabitRepository {
   async createHabit(data: CreateHabitRequest): Promise<void> {
     return new Promise((resolve, reject) => {
       database.transaction(tx => {
+        const formattedStartDate = new Date(data.startDate).toISOString();
+        const formattedEndDate = new Date(data.endDate).toISOString();
         tx.executeSql(
-          'INSERT INTO habits (userId, categoryId, name, description, frequency, startDate, endDate) VALUES (?, ?, ?, ?, ?)',
+          'INSERT INTO habits (userId, categoryId, name, description, frequency, startDate, endDate) VALUES (?, ?, ?, ?, ?, ?, ?)',
           [
             data.userId,
             data.categoryId,
             data.name,
             data.description,
             data.frequency,
-            data.startDate,
-            data.endDate,
+            formattedStartDate,
+            formattedEndDate,
           ],
           (_tx, result) => {
             if (result.rowsAffected > 0) {

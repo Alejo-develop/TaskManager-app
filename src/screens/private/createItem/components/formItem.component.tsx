@@ -22,16 +22,14 @@ const FormItemComponent = ({itemType, categories}: FormItemComponentProps) => {
   const {
     date,
     endDate,
-    isVisibleDatePickerInitial,
-    isVisibleEndDatePicker,
+    isVisibleDatePicker,
     idCategorie,
     form,
     frecuency,
     setFrecuency,
+    setIsVisibleDatePicker,
     handleFormChange,
     setIdCategorie,
-    setIsVisibleDateInitialPicker,
-    setIsVisibleEndDatePicker,
     selectStartDate,
     selectEndDate,
     createItem,
@@ -74,7 +72,7 @@ const FormItemComponent = ({itemType, categories}: FormItemComponentProps) => {
           onChangeText={text => handleFormChange('description', text)}
         />
 
-        {isVisibleDatePickerInitial && (
+        {isVisibleDatePicker && (
           <DateTimePicker
             mode="date"
             display="compact"
@@ -83,7 +81,7 @@ const FormItemComponent = ({itemType, categories}: FormItemComponentProps) => {
           />
         )}
 
-        {isVisibleEndDatePicker && (
+        {isVisibleDatePicker && (
             <DateTimePicker
               mode="date"
               display="compact"
@@ -101,7 +99,7 @@ const FormItemComponent = ({itemType, categories}: FormItemComponentProps) => {
             placeholder="Frecuency..."
             value="Frecuency"
             keyBoardPad="decimal-pad"
-            onChangeText={text => setFrecuency(parseInt(text))}
+            onChangeText={text => setFrecuency((text))}
           />
         )}
         {(itemType === 'habit' || itemType === 'challenge') && (
@@ -115,12 +113,12 @@ const FormItemComponent = ({itemType, categories}: FormItemComponentProps) => {
             <ButtonSelectDate
               text="Start Date"
               onPress={() =>
-                setIsVisibleDateInitialPicker(!isVisibleDatePickerInitial)
+                setIsVisibleDatePicker(!isVisibleDatePicker)
               }
             />
             <ButtonSelectDate
               text="End Date"
-              onPress={() => setIsVisibleEndDatePicker(!isVisibleEndDatePicker)}
+              onPress={() => setIsVisibleDatePicker(!isVisibleDatePicker)}
             />
           </View>
         )}
@@ -133,8 +131,8 @@ const FormItemComponent = ({itemType, categories}: FormItemComponentProps) => {
             ...form,
             startDate: date,
             endDate: endDate,
-            idCategorie: idCategorie,
-            frecuency: frecuency,
+            categoryId: idCategorie,
+            frequency: frecuency,
           })
         }
       />

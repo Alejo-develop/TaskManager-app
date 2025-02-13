@@ -2,12 +2,12 @@ import {useFocusEffect, useRoute} from '@react-navigation/native';
 import {CreateItemRouteProp} from '../../../../types/navigation.type';
 import {useCallback, useState} from 'react';
 import {Category} from '../../../../../core/domain/entities/categories/category';
-import { CategoriesController } from '../../../../../core/infrastructure/controllers/category.controller';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../../../redux/store';
+import {CategoriesController} from '../../../../../core/infrastructure/controllers/category.controller';
+import {useSelector} from 'react-redux';
+import {RootState} from '../../../../redux/store';
 
 const UseCreateItem = () => {
-  const token = useSelector((state: RootState) => state.user.token)
+  const token = useSelector((state: RootState) => state.user.token);
   const route = useRoute<CreateItemRouteProp>();
   const {itemType} = route.params;
 
@@ -15,20 +15,19 @@ const UseCreateItem = () => {
 
   const getCategories = async () => {
     try {
-      const response = await CategoriesController.findAll({token})
-      
-      if('data' in response){
-        setCategories(response.data)
-        return
-      }else{
-        return 
+      const response = await CategoriesController.findAll({token});
+
+      if ('data' in response) {
+        setCategories(response.data);
+        return;
+      } else {
+        return;
       }
-      
     } catch (error) {
-      console.log(error); 
-      return
+      console.log(error);
+      return;
     }
-  }
+  };
 
   useFocusEffect(
     useCallback(() => {
@@ -38,7 +37,7 @@ const UseCreateItem = () => {
 
   return {
     itemType,
-    categories
+    categories,
   };
 };
 

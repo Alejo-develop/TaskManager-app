@@ -1,41 +1,41 @@
 import {DateTimePickerEvent} from '@react-native-community/datetimepicker';
 import {useState} from 'react';
-import {
-  CreateChallengeInterface,
-  CreateHabitInterface,
-  CreatePurposeInterface,
-  FormTypes,
-} from '../../../../interface/item.interface';
+import {ItemInterface} from '../../../../interface/item.interface';
 import AlertMessageComponent from '../../../../components/alertMessage/alertMessage.component';
 import {
   normalizeDate,
   validateDates,
   validateFrequency,
 } from '../../../../utils/function.utils';
+import {HabitController} from '../../../../../core/infrastructure/controllers/habit.controller';
+import {useSelector} from 'react-redux';
+import {RootState} from '../../../../redux/store';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { PrivateNavigationRoutes } from '../../../../types/navigation.type';
 
 const UseFormItem = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [date, setDate] = useState<Date>(new Date());
   const [endDate, setEndDate] = useState<Date>(new Date());
-  const [isVisibleDatePickerInitial, setIsVisibleDateInitialPicker] =
-    useState<boolean>(false);
-  const [isVisibleEndDatePicker, setIsVisibleEndDatePicker] =
+  const [isVisibleDatePicker, setIsVisibleDatePicker] =
     useState<boolean>(false);
   const [idCategorie, setIdCategorie] = useState<string>('');
-  const [form, setForm] = useState<
-    CreateHabitInterface | CreateChallengeInterface | CreatePurposeInterface
-  >({
+  const [form, setForm] = useState<ItemInterface>({
     name: '',
     description: '',
-    idCategorie: idCategorie,
-    frecuency: 0,
+    categoryId: '',
+    frequency: '',
     startDate: new Date(),
     endDate: new Date(),
   });
-  const [frecuency, setFrecuency] = useState<number>(0);
+  const [frecuency, setFrecuency] = useState<string>('');
+  const userId = useSelector((state: RootState) => state.user.id);
 
-  const handleFormChange = <T extends FormTypes>(
-    field: keyof T,
+  const navigate = useNavigation<NativeStackNavigationProp<PrivateNavigationRoutes>>()
+
+  const handleFormChange = (
+    field: keyof ItemInterface,
     value: any,
   ) => {
     setForm(prevForm => ({
@@ -49,11 +49,11 @@ const UseFormItem = () => {
     selectedDate: Date | undefined,
   ) => {
     if (event.type === 'dismissed') {
-      setIsVisibleDateInitialPicker(false);
+      setIsVisibleDatePicker(false);
       return;
     }
     const currentDate = selectedDate || date;
-    setIsVisibleDateInitialPicker(false);
+    setIsVisibleDatePicker(false);
     setDate(currentDate);
     return;
   };
@@ -63,22 +63,16 @@ const UseFormItem = () => {
     selectedDate: Date | undefined,
   ) => {
     if (event.type === 'dismissed') {
-      setIsVisibleEndDatePicker(false);
+      setIsVisibleDatePicker(false);
       return;
     }
     const currentDate = selectedDate || endDate;
-    setIsVisibleEndDatePicker(false);
+    setIsVisibleDatePicker(false);
     setEndDate(currentDate);
     return;
   };
 
-  const createItem = (
-    itemType: string,
-    data:
-      | CreateHabitInterface
-      | CreateChallengeInterface
-      | CreatePurposeInterface,
-  ) => {
+  const createItem = async (itemType: string, data: ItemInterface) => {
     const currentDate = normalizeDate(new Date());
     if (!data.name) {
       AlertMessageComponent({
@@ -88,7 +82,7 @@ const UseFormItem = () => {
       });
       return;
     }
-    if (!data.idCategorie) {
+    if (!data.categoryId) {
       AlertMessageComponent({
         type: 'error',
         text1: 'Error',
@@ -99,32 +93,43 @@ const UseFormItem = () => {
 
     switch (itemType) {
       case 'habit':
-        if (
-          (data as CreateHabitInterface).startDate &&
-          (data as CreateHabitInterface).endDate
-        ) {
-          const {startDate, endDate} = data as CreateHabitInterface;
-        if (!validateDates(startDate, endDate, currentDate)) {
-            return;
-          }
-        }
-        if (!validateFrequency((data as CreateHabitInterface).frecuency)) {
+        const {startDate: startDateHabit, endDate: endDateHabit} =
+          data as ItemInterface;
+        if (!validateDates(startDateHabit, endDateHabit, currentDate)) {
           return;
         }
-        console.log('habit', data);
+
+        if (!validateFrequency((data as ItemInterface).frequency)) {
+          return;
+        }
+
+        try {
+          console.log({...data, userId}, 2, null);
+          
+          await HabitController.CreateHabit({...data, userId});
+          AlertMessageComponent({
+            type: 'success',
+            text1: 'Succes',
+            text2: 'Habit created succesfully',
+          });
+          navigate.navigate('main')
+        } catch (error) {
+          console.log(error);
+          AlertMessageComponent({
+            type: 'error',
+            text1: 'Error',
+            text2: 'Cannot posible created a habit',
+          });
+        }
         break;
 
       case 'challenge':
-        if (
-          (data as CreateHabitInterface).startDate &&
-          (data as CreateHabitInterface).endDate
-        ) {
-          const {startDate, endDate} = data as CreateHabitInterface;
-          if (!validateDates(startDate, endDate, currentDate)) {
-            return;
-          }
+        const {startDate, endDate} = data as ItemInterface;
+        if (!validateDates(startDate, endDate, currentDate)) {
+          return;
         }
-        if (!validateFrequency((data as CreateHabitInterface).frecuency)) {
+
+        if (!validateFrequency((data as ItemInterface).frequency)) {
           return;
         }
         console.log('challenge', data);
@@ -134,7 +139,7 @@ const UseFormItem = () => {
         const formattedData = {
           name: data.name,
           description: data.description,
-          idCategorie: data.idCategorie,
+          idCategorie: data.categoryId,
         };
         console.log('purpose', formattedData);
         break;
@@ -144,8 +149,7 @@ const UseFormItem = () => {
   return {
     date,
     endDate,
-    isVisibleDatePickerInitial,
-    isVisibleEndDatePicker,
+    isVisibleDatePicker,
     idCategorie,
     form,
     frecuency,
@@ -153,8 +157,7 @@ const UseFormItem = () => {
     createItem,
     setIdCategorie,
     handleFormChange,
-    setIsVisibleEndDatePicker,
-    setIsVisibleDateInitialPicker,
+    setIsVisibleDatePicker,
     selectStartDate,
     selectEndDate,
   };

@@ -41,8 +41,8 @@ export const validateDates = (
   return true;
 };
 
-export const validateFrequency = (frequency: number): boolean => {
-  if (frequency === undefined || frequency === 0) {
+export const validateFrequency = (frequency: string): boolean => {
+  if (frequency === undefined || parseInt(frequency) === 0) {
     AlertMessageComponent({
       type: 'error',
       text1: 'Error',
