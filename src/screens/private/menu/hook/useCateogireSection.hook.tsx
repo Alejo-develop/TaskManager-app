@@ -7,7 +7,7 @@ const UseCategorieSection = () => {
     useNavigation<NativeStackNavigationProp<PrivateNavigationRoutes>>();
 
   const navigate = (route: string) => {
-    goTo.navigate('seeItemByCategorie', {categorieType: route});
+    goTo.navigate('seeItemByCategorie', {categoryType: route});
   };
 
   return {

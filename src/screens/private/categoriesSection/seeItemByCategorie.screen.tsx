@@ -14,7 +14,7 @@ const SeeItemByCategorieScreen = () => {
       <View style={{paddingBottom: height * 0.3, width: width * 1}}>
         <FlatList
           data={categories}
-          renderItem={({item}) => <SubCategoryCardComponent data={item} />}
+          renderItem={({item}) => <SubCategoryCardComponent categoryType={categorieType} data={item} />}
           contentContainerStyle={{
             width: width * 1,
             alignItems: 'center',
@@ -22,7 +22,6 @@ const SeeItemByCategorieScreen = () => {
             paddingTop: 10
           }}
           numColumns={2} 
-          
         />
       </View>
     </View>

@@ -3,21 +3,30 @@ import {Category} from '../../../../../core/domain/entities/categories/category'
 import {StyleSheet} from 'react-native';
 import {
   height,
-  literataBold,
   literataRegular,
   redColor,
   whiteColor,
   width,
 } from '../../../../utils/style.constanst';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { PrivateNavigationRoutes } from '../../../../types/navigation.type';
 
 interface SubCategoryCardComponentProps {
   data: Category;
+  categoryType: string;
 }
 
-const SubCategoryCardComponent = ({data}: SubCategoryCardComponentProps) => {
+const SubCategoryCardComponent = ({data, categoryType}: SubCategoryCardComponentProps) => {
+  const goTo = useNavigation<NativeStackNavigationProp<PrivateNavigationRoutes>>()
+
+  const goToSeeItems = () => {
+    goTo.navigate('itemList', {categoryType: categoryType})
+  }
+
   return (
     <View style={style.containerCard}>
-      <TouchableOpacity style={style.card}>
+      <TouchableOpacity style={style.card} onPress={goToSeeItems}>
         <Image source={{uri: data.img}} style={style.img} />
       </TouchableOpacity>
       <Text style={style.title}>{data.name}</Text>

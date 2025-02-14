@@ -8,7 +8,7 @@ import { RootState } from '../../../../redux/store';
 
 const UseSeeItemByCategorie = () => {
   const route = useRoute<SeeItemRouteProp>();
-  const {categorieType} = route.params;
+  const {categoryType: categorieType} = route.params;
   const token = useSelector((state: RootState) => state.user.token)
 
   const [categories, setCategories] = useState<Category[]>([]);
