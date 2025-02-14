@@ -13,6 +13,7 @@
         "Info user Modal",
         "See  items by categorie screen",
         "Categories entity",
-        "Config DataBase with SQLite"
+        "Config DataBase with SQLite",
+        "entitys"
     ]
 }
