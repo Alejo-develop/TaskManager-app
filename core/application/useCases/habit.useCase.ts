@@ -9,7 +9,7 @@ export const CreateHabit = (
   return habitRepository.createHabit(data);
 };
 
-export const findHabits = (
+export const FindHabits = (
   findHabitRepository: HabitRepository,
   userId: string,
   categoryId: string
@@ -17,7 +17,7 @@ export const findHabits = (
   return findHabitRepository.findHabits(userId, categoryId);
 };
 
-export const updateHabit = (
+export const UpdateHabit = (
   habitRepository: HabitRepository,
   habitId: number,
   data: Partial<CreateHabitRequest>,
@@ -25,7 +25,7 @@ export const updateHabit = (
   return habitRepository.updateHabit(habitId, data);
 };
 
-export const delteHabit = (
+export const DelteHabit = (
   habitRepository: HabitRepository,
   habitId: number,
 ): Promise<void> => {

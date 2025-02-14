@@ -104,8 +104,6 @@ const UseFormItem = () => {
         }
 
         try {
-          console.log({...data, userId}, 2, null);
-          
           await HabitController.CreateHabit({...data, userId});
           AlertMessageComponent({
             type: 'success',

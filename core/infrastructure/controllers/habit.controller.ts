@@ -1,8 +1,8 @@
 import {
   CreateHabit,
-  findHabits,
-  updateHabit,
-  delteHabit,
+  FindHabits,
+  UpdateHabit,
+  DelteHabit,
 } from '../../application/useCases/habit.useCase';
 import {CreateHabitRequest} from '../../domain/entities/habits/request/createHabitRequest';
 import {HabitRepositoryImp} from '../repositories/habit.repositoryImp';
@@ -21,7 +21,7 @@ export class HabitController {
 
   static async FindHabits(userId: string, categoryId: string) {
     try {
-      return await findHabits(habitRepository, userId, categoryId);
+      return await FindHabits(habitRepository, userId, categoryId);
     } catch (error) {
       console.log(error);
       throw error;
@@ -30,7 +30,7 @@ export class HabitController {
 
   static async UpdateHbait(habitId: number, data: Partial<CreateHabitRequest>) {
     try {
-      return await updateHabit(habitRepository, habitId, data);
+      return await UpdateHabit(habitRepository, habitId, data);
     } catch (error) {
       console.log(error);
       throw error;
@@ -39,7 +39,7 @@ export class HabitController {
 
   static async DeleteHabit(habitId: number) {
     try {
-      return await delteHabit(habitRepository, habitId);
+      return await DelteHabit(habitRepository, habitId);
     } catch (error) {
       console.log(error);
       throw error;
