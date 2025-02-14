@@ -1,5 +1,5 @@
 export const ChallengeTable = `
-  CREATE TABLE IF NOT EXISTS challenge (
+  CREATE TABLE IF NOT EXISTS challenges (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     userId TEXT,
     categoryId TEXT NOT NULL,
