@@ -12,7 +12,7 @@ export type PrivateNavigationRoutes = {
   menu: undefined;
   statics: undefined;
   seeItemByCategorie: {categoryType: string},
-  itemList: {categoryType: string}
+  itemList: {categoryName: string, categoryId:string, itemType: string}
 }
 
 export type CreateItemRouteProp = RouteProp<PrivateNavigationRoutes, 'createItem'>;

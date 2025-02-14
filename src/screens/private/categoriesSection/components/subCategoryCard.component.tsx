@@ -21,7 +21,7 @@ const SubCategoryCardComponent = ({data, categoryType}: SubCategoryCardComponent
   const goTo = useNavigation<NativeStackNavigationProp<PrivateNavigationRoutes>>()
 
   const goToSeeItems = () => {
-    goTo.navigate('itemList', {categoryType: categoryType})
+    goTo.navigate('itemList', {categoryName: data.name,categoryId: data.id, itemType: categoryType})
   }
 
   return (
