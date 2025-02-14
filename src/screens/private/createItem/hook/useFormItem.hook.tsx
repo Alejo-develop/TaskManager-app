@@ -10,9 +10,11 @@ import {
 import {HabitController} from '../../../../../core/infrastructure/controllers/habit.controller';
 import {useSelector} from 'react-redux';
 import {RootState} from '../../../../redux/store';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { PrivateNavigationRoutes } from '../../../../types/navigation.type';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {PrivateNavigationRoutes} from '../../../../types/navigation.type';
+import {ChallengeController} from '../../../../../core/infrastructure/controllers/challenge.controller';
+import {PurposeController} from '../../../../../core/infrastructure/controllers/purpose.controller';
 
 const UseFormItem = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -32,12 +34,10 @@ const UseFormItem = () => {
   const [frecuency, setFrecuency] = useState<string>('');
   const userId = useSelector((state: RootState) => state.user.id);
 
-  const navigate = useNavigation<NativeStackNavigationProp<PrivateNavigationRoutes>>()
+  const navigate =
+    useNavigation<NativeStackNavigationProp<PrivateNavigationRoutes>>();
 
-  const handleFormChange = (
-    field: keyof ItemInterface,
-    value: any,
-  ) => {
+  const handleFormChange = (field: keyof ItemInterface, value: any) => {
     setForm(prevForm => ({
       ...prevForm,
       [field]: value,
@@ -98,7 +98,6 @@ const UseFormItem = () => {
         if (!validateDates(startDateHabit, endDateHabit, currentDate)) {
           return;
         }
-
         if (!validateFrequency((data as ItemInterface).frequency)) {
           return;
         }
@@ -110,7 +109,7 @@ const UseFormItem = () => {
             text1: 'Succes',
             text2: 'Habit created succesfully',
           });
-          navigate.navigate('main')
+          navigate.navigate('main');
         } catch (error) {
           console.log(error);
           AlertMessageComponent({
@@ -126,20 +125,51 @@ const UseFormItem = () => {
         if (!validateDates(startDate, endDate, currentDate)) {
           return;
         }
-
         if (!validateFrequency((data as ItemInterface).frequency)) {
           return;
         }
-        console.log('challenge', data);
+
+        try {
+          await ChallengeController.CreateChallenge({...data, userId});
+          AlertMessageComponent({
+            type: 'success',
+            text1: 'Succes',
+            text2: 'Challenge created succesfully',
+          });
+          navigate.navigate('main');
+        } catch (error) {
+          console.log(error);
+          AlertMessageComponent({
+            type: 'error',
+            text1: 'Error',
+            text2: 'Cannot posible created a challenge',
+          });
+        }
         break;
 
       default:
         const formattedData = {
+          userId,
+          categoryId: data.categoryId,
           name: data.name,
           description: data.description,
-          idCategorie: data.categoryId,
         };
-        console.log('purpose', formattedData);
+        try {
+          await PurposeController.CreatePurpose(formattedData);
+          AlertMessageComponent({
+            type: 'success',
+            text1: 'Succes',
+            text2: 'Purpose created succesfully',
+          });
+          navigate.navigate('main');
+        } catch (error) {
+          console.log(error);
+          AlertMessageComponent({
+            type: 'error',
+            text1: 'Error',
+            text2: 'Cannot posible created a purpose',
+          });
+        }
         break;
     }
   };
