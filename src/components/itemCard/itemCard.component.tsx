@@ -10,6 +10,9 @@ import {
 import {Habit} from '../../../core/domain/entities/habits/habit';
 import {Challenge} from '../../../core/domain/entities/challenges/challenge';
 import {Purpose} from '../../../core/domain/entities/purposes/purpose';
+import ModalItemCard from './components/modalItemCard.component';
+import {useState} from 'react';
+import ModalPurposeItemCard from './components/modalPurposeItemCard.component';
 
 interface ItemCardComponentProps {
   data: Habit | Challenge | Purpose;
@@ -23,21 +26,31 @@ const ItemCardComponent = ({
   categoryName,
 }: ItemCardComponentProps) => {
   const currentDate = new Date();
+  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 
   return (
     <TouchableOpacity
       style={[
         styles.card,
         itemType === 'purposes' ? {height: height * 0.08} : {},
-      ]}>
+      ]}
+      onPress={() => setIsModalVisible(true)}>
       {itemType === 'purposes' ? (
         <View style={stylesPurposeItemType.containerInfo}>
-          <View style={{width: width * 0.4,}}>
+          <View style={{width: width * 0.4}}>
             <Text style={stylesPurposeItemType.title}>{data.name}</Text>
             <Text style={stylesPurposeItemType.subTitle}>{categoryName}</Text>
           </View>
 
-          <Text style={[stylesPurposeItemType.description, data.description ? {} : {color: '#E0E0E0'}]}>{data.description ? data.description : 'Description no Aviable yet.'}</Text>
+          <Text
+            style={[
+              stylesPurposeItemType.description,
+              data.description ? {} : {color: '#E0E0E0'},
+            ]}>
+            {data.description
+              ? data.description
+              : 'Description no Aviable yet.'}
+          </Text>
         </View>
       ) : (
         <View style={{flexDirection: 'row', width: width * 1}}>
@@ -66,6 +79,22 @@ const ItemCardComponent = ({
             </Text>
           </View>
         </View>
+      )}
+
+      {itemType === 'habits' || itemType === 'challenges' ? (
+        <ModalItemCard
+          data={(data as Habit) || (data as Challenge) ? data : {}}
+          isVisible={isModalVisible}
+          onClose={() => setIsModalVisible(false)}
+        />
+      ) : null}
+
+      {itemType === 'purposes' && (
+        <ModalPurposeItemCard
+          data={(data as Purpose)}
+          isVisible={isModalVisible}
+          onClose={() => setIsModalVisible(false)}
+        />
       )}
     </TouchableOpacity>
   );
@@ -131,13 +160,13 @@ const stylesPurposeItemType = StyleSheet.create({
     color: whiteColor,
     fontSize: 15,
   },
-  description:{
+  description: {
     fontFamily: literataItalic,
     color: whiteColor,
     width: width * 0.35,
     textAlign: 'center',
-    fontSize: 12
-  }
+    fontSize: 12,
+  },
 });
 
 export default ItemCardComponent;

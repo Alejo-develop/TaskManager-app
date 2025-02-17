@@ -58,7 +58,8 @@ const style = StyleSheet.create({
     textAlign: 'center',
     fontFamily: literataRegular,
     bottom: 8,
-    color: whiteColor
+    color: whiteColor,
+    paddingLeft: 20
   },
 });
 
