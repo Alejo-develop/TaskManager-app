@@ -12,4 +12,6 @@ export const imgOnboarding = {
     'https://res.cloudinary.com/djqwo9izl/image/upload/v1737818808/esquina_derch_ecdzs6.png',
   angel:
     'https://res.cloudinary.com/djqwo9izl/image/upload/v1738622924/angel_lm0mlo.png',
+  cupidBoi:
+    'https://res.cloudinary.com/djqwo9izl/image/upload/v1739755053/cupido-removebg-preview_q7izdq.png',
 };

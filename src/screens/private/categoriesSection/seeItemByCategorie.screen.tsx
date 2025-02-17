@@ -1,4 +1,4 @@
-import {FlatList, Text, View} from 'react-native';
+import {FlatList, View} from 'react-native';
 import {blueColor, height, width} from '../../../utils/style.constanst';
 import UseSeeItemByCategorie from './hook/useSeeItemsByCategorie.hook';
 import HeaderSeeItemByCategorieScreen from './components/headerSeeItem.component';
