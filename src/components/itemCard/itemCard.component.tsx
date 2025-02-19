@@ -85,13 +85,15 @@ const ItemCardComponent = ({
         <ModalItemCard
           data={(data as Habit) || (data as Challenge) ? data : {}}
           isVisible={isModalVisible}
+          categoryName={categoryName}
           onClose={() => setIsModalVisible(false)}
+          itemType={itemType}
         />
       ) : null}
 
       {itemType === 'purposes' && (
         <ModalPurposeItemCard
-          data={(data as Purpose)}
+          data={data as Purpose}
           isVisible={isModalVisible}
           onClose={() => setIsModalVisible(false)}
         />

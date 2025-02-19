@@ -87,7 +87,7 @@ const FormItemComponent = ({itemType, categories}: FormItemComponentProps) => {
               display="compact"
               value={endDate}
               onChange={selectEndDate}
-              accentColor={redColor}         
+              accentColor={redColor}       
             />
         )}
 
