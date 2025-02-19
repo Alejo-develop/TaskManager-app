@@ -1,4 +1,4 @@
-import {Modal, StyleSheet, Text, TextInput, View} from 'react-native';
+import {Modal, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Challenge} from '../../../../core/domain/entities/challenges/challenge';
 import {Habit} from '../../../../core/domain/entities/habits/habit';
 import {BaseModalProps} from '../../../interface/modal.interface';
@@ -17,11 +17,12 @@ import ButtonSelectDate from '../../../screens/private/createItem/components/but
 import UseUpdateItem from '../hooks/useUpdateItem.hook';
 import ButtonComponent from '../../button/button.component';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import {Calendar} from 'react-native-calendars';
 
 interface ModalItemCardProps extends BaseModalProps {
   data: Habit | Challenge | {};
   categoryName: string;
-  itemType: string
+  itemType: string;
 }
 
 const ModalItemCard = ({
@@ -35,12 +36,13 @@ const ModalItemCard = ({
   const {
     form,
     isModalDateVisible,
+    maketDates,
     handleFormChange,
     updateItem,
     setIsModalDateVisible,
-    selectEndDate
+    selectEndDate,
   } = UseUpdateItem({
-    name: (data as Habit | Challenge).name,
+    startDate: (data as Habit | Challenge).startDate,
     description: (data as Habit | Challenge).description,
     frequency: (data as Habit | Challenge).frequency,
     endDate: (data as Habit | Challenge).endDate,
@@ -54,7 +56,9 @@ const ModalItemCard = ({
       transparent={true}>
       <View style={styles.container}>
         <View style={styles.modal}>
-          <Text style={styles.name}>{(data as Habit | Challenge).name}</Text>
+          <View>
+            <Text style={styles.name}>{(data as Habit | Challenge).name}</Text>
+          </View>
 
           <View style={styles.containerInputsAndInfo}>
             <View style={{gap: 14}}>
@@ -68,7 +72,10 @@ const ModalItemCard = ({
                 onChangeText={text => handleFormChange('frequency', text)}
                 title="Frecuency"
               />
-              <ButtonSelectDate text="Change End Date" onPress={() => setIsModalDateVisible(true)}/>
+              <ButtonSelectDate
+                text="Change End Date"
+                onPress={() => setIsModalDateVisible(true)}
+              />
             </View>
 
             <View style={{gap: 10}}>
@@ -90,7 +97,23 @@ const ModalItemCard = ({
             </View>
           </View>
 
-          <View style={styles.containerCalendary}></View>
+          <Calendar
+            style={styles.containerCalendary}
+            markedDates={maketDates}
+            markingType="custom"
+            theme={{
+              calendarBackground: redColor,
+              selectedDayBackgroundColor: blueColor,
+              textDayFontFamily: literataBold,
+              textSectionTitleColor: whiteColor,
+              todayTextColor: blueColor,
+              monthTextColor: whiteColor,
+              arrowColor: whiteColor,
+              dayTextColor: whiteColor,
+              selectedDayTextColor: blueColor,
+            }}
+          />
+
           <ButtonComponent
             backgroundColor={redColor}
             text="Finished"
@@ -144,7 +167,7 @@ const styles = StyleSheet.create({
   containerStreak: {
     gap: 5,
     width: width * 0.3,
-    height: height * 0.16,
+    height: height * 0.18,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -168,9 +191,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   containerCalendary: {
-    borderWidth: 1,
     width: width * 0.76,
-    height: height * 0.35,
+    elevation: 6,
   },
 });
 

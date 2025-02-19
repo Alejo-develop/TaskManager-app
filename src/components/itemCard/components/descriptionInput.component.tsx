@@ -14,14 +14,15 @@ interface DescriptionInputProps {
   onChangeText?: (text: string) => void;
 }
 
-const InputModalComponent = ({info, onChangeText}:DescriptionInputProps) => {
+const InputModalComponent = ({info, title, onChangeText}:DescriptionInputProps) => {
   return (
     <View style={{gap: 7}}>
-      <Text style={styles.title}>Description</Text>
+      <Text style={styles.title}>{title}</Text>
       <TextInput 
         style={styles.input}
-        placeholder={info ? info : 'Description not available'}
+        placeholder={info ? info : 'Not available'}
         onChangeText={onChangeText}
+        placeholderTextColor={whiteColor}
         />
     </View>
   );
@@ -38,6 +39,8 @@ const styles = StyleSheet.create({
     width: width * 0.4,
     height: height * 0.05,
     alignItems: 'flex-start',
+    fontFamily: literataItalic,
+    paddingLeft: 10,  
   },
 });
 
