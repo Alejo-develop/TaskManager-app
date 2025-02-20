@@ -3,7 +3,7 @@ import UseItemList from './hooks/useItemList.hook';
 import HeaderItemListComponent from './components/headerItemList.componment';
 import {blueColor, height, literataRegular, whiteColor, width} from '../../../utils/style.constanst';
 import ItemCardComponent from '../../../components/itemCard/itemCard.component';
-import {imgOnboarding} from '../../../utils/img.constanst';
+import {imgCloudinary} from '../../../utils/img.constanst';
 
 const ItemListScreen = () => {
   const {itemName, categoryName, items, itemType} = UseItemList();
@@ -36,7 +36,7 @@ const ItemListScreen = () => {
           />
         ) : (
           <View style={styles.errorContainer}>
-            <Image style={styles.img} source={{uri: imgOnboarding.cupidBoi}} />
+            <Image style={styles.img} source={{uri: imgCloudinary.cupidBoi}} />
             <Text style={styles.errorText}>
               Not {itemName} availabe under this category.
             </Text>

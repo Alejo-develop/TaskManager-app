@@ -6,7 +6,7 @@ import {
   width,
 } from '../../../../utils/style.constanst';
 import CategorieButtonComponent from './buttonCategorie.component';
-import {imgOnboarding} from '../../../../utils/img.constanst';
+import {imgCloudinary} from '../../../../utils/img.constanst';
 import UseCategorieSection from '../hook/useCateogireSection.hook';
 
 const CategorieSectionComponent = () => {
@@ -19,17 +19,17 @@ const CategorieSectionComponent = () => {
       <View style={styles.containerButtos}>
         <CategorieButtonComponent
           text="Purposes"
-          img={imgOnboarding.candle}
+          img={imgCloudinary.candle}
           onPress={() => navigate('purposes')}
         />
         <CategorieButtonComponent
           text="Habits"
-          img={imgOnboarding.crown}
+          img={imgCloudinary.crown}
           onPress={() => navigate('habits')}
         />
         <CategorieButtonComponent
           text="Challenges"
-          img={imgOnboarding.mirror}
+          img={imgCloudinary.mirror}
           onPress={() => navigate('challenges')}
         />
       </View>

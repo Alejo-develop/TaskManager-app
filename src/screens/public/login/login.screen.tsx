@@ -3,7 +3,7 @@ import styles from './styles';
 import {blueColor, redColor} from '../../../utils/style.constanst';
 import FormLoginComponent from './components/formLogin.component';
 import ButtonComponent from '../../../components/button/button.component';
-import {imgOnboarding} from '../../../utils/img.constanst';
+import {imgCloudinary} from '../../../utils/img.constanst';
 import LoginHook from './hook/login.hook';
 
 const LoginScreen = () => {
@@ -16,7 +16,7 @@ const LoginScreen = () => {
       keyboardShouldPersistTaps="handled">
       <View style={styles.header}>
         <View style={{alignItems: 'center'}}>
-          <Image source={{uri: imgOnboarding.crown}} style={styles.img} />
+          <Image source={{uri: imgCloudinary.crown}} style={styles.img} />
           <Text style={styles.name}>
             <Text style={{color: blueColor}}>Task</Text> Manager
           </Text>

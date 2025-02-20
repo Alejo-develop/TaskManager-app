@@ -1,6 +1,6 @@
 import {Image, StyleSheet, Text, View} from 'react-native';
 import ContainerPageComponent from './container.component';
-import {imgOnboarding} from '../../../../utils/img.constanst';
+import {imgCloudinary} from '../../../../utils/img.constanst';
 import {
   blueColor,
   height,
@@ -12,7 +12,7 @@ import {
 const ThirdOnboardingScreen = () => {
   return (
     <ContainerPageComponent>
-      <Image source={{uri: imgOnboarding.candle}} style={styles.img} />
+      <Image source={{uri: imgCloudinary.candle}} style={styles.img} />
 
       <Text style={styles.text}>
         In <Text style={{color: redColor}}>Task</Text>{' '}

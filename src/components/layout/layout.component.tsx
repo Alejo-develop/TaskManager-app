@@ -7,7 +7,7 @@ import {
   whiteColor,
   width,
 } from '../../utils/style.constanst';
-import {imgOnboarding} from '../../utils/img.constanst';
+import {imgCloudinary} from '../../utils/img.constanst';
 import UseLayout from './hook/useLayout.hook';
 
 interface LayoutProps {
@@ -22,7 +22,7 @@ const LayoutComponent = ({children}: LayoutProps) => {
       <View style={styles.containerheader}>
         <View style={styles.sectionHeaders}>
           <Text style={styles.welcome}>Welcome</Text>
-          <Image source={{uri: imgOnboarding.crown}} style={styles.crown} />
+          <Image source={{uri: imgCloudinary.crown}} style={styles.crown} />
         </View>
         <View style={[styles.sectionHeaders, {paddingRight: 0}]}>
           <Text style={styles.date}>{date}</Text>

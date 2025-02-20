@@ -1,6 +1,6 @@
 import {Image, StyleSheet, Text, View} from 'react-native';
 import {height, literataItalic, whiteColor, width} from '../../../../utils/style.constanst';
-import {imgOnboarding} from '../../../../utils/img.constanst';
+import {imgCloudinary} from '../../../../utils/img.constanst';
 
 interface HeaderSeeItemByCategorieScreenProps {
   itemType: string;
@@ -31,10 +31,10 @@ const HeaderSeeItemByCategorieScreen = ({
         source={{
           uri:
             itemType === 'habits'
-              ? imgOnboarding.crown
+              ? imgCloudinary.crown
               : itemType === 'challenges'
-              ? imgOnboarding.mirror
-              : imgOnboarding.candle,
+              ? imgCloudinary.mirror
+              : imgCloudinary.candle,
         }}
       />
       <Text style={styles.text}>

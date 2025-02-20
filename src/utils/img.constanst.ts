@@ -1,4 +1,4 @@
-export const imgOnboarding = {
+export const imgCloudinary = {
   crown:
     'https://res.cloudinary.com/djqwo9izl/image/upload/v1737818762/corona_go668r.png',
   mirror:
@@ -15,3 +15,7 @@ export const imgOnboarding = {
   cupidBoi:
     'https://res.cloudinary.com/djqwo9izl/image/upload/v1739755053/cupido-removebg-preview_q7izdq.png',
 };
+
+export const imgInProject = {
+  trash: require('../assets/img/trash-icon.png')
+}

@@ -18,6 +18,8 @@ import UseUpdateItem from '../hooks/useUpdateItem.hook';
 import ButtonComponent from '../../button/button.component';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import {Calendar} from 'react-native-calendars';
+import IconButtonComponent from '../../buttonIcon/buttonIcon.component';
+import { imgInProject } from '../../../utils/img.constanst';
 
 interface ModalItemCardProps extends BaseModalProps {
   data: Habit | Challenge | {};
@@ -56,8 +58,14 @@ const ModalItemCard = ({
       transparent={true}>
       <View style={styles.container}>
         <View style={styles.modal}>
-          <View>
+          <View style={{flexDirection: 'row', gap: width * 0.1}}>
             <Text style={styles.name}>{(data as Habit | Challenge).name}</Text>
+            <IconButtonComponent
+            height={'0.05'}
+            width={'0.09'}
+            img={imgInProject.trash}
+            backgroundColor={redColor}
+            />
           </View>
 
           <View style={styles.containerInputsAndInfo}>
@@ -103,7 +111,6 @@ const ModalItemCard = ({
             markingType="custom"
             theme={{
               calendarBackground: redColor,
-              selectedDayBackgroundColor: blueColor,
               textDayFontFamily: literataBold,
               textSectionTitleColor: whiteColor,
               todayTextColor: blueColor,
@@ -159,6 +166,9 @@ const styles = StyleSheet.create({
     fontFamily: literataBold,
     color: whiteColor,
     fontSize: 16,
+    width: width * 0.4,
+    textAlign: 'center',
+    paddingRight: 50,
   },
   containerInputsAndInfo: {
     flexDirection: 'row',

@@ -1,6 +1,6 @@
 import {Image, StyleSheet, Text, View} from 'react-native';
 import ContainerPageComponent from './container.component';
-import {imgOnboarding} from '../../../../utils/img.constanst';
+import {imgCloudinary} from '../../../../utils/img.constanst';
 import { blueColor, height, literataBold, literataItalic, redColor, titleBold, width } from '../../../../utils/style.constanst';
 
 const FirstOnboardingScreen = () => {
@@ -8,7 +8,7 @@ const FirstOnboardingScreen = () => {
     <ContainerPageComponent>
       <Text style={styles.text1}>Welcome to</Text>
       <View>
-        <Image source={{uri: imgOnboarding.crown}} style={styles.img} />
+        <Image source={{uri: imgCloudinary.crown}} style={styles.img} />
       </View>
       <Text style={styles.title}>Task <Text style={{color: blueColor}}>Manager</Text></Text>
       <Text style={styles.slogan}>Why habits are the key to success</Text>

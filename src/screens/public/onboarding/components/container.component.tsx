@@ -7,7 +7,7 @@ import {
   whiteColor,
   width,
 } from '../../../../utils/style.constanst';
-import {imgOnboarding} from '../../../../utils/img.constanst';
+import {imgCloudinary} from '../../../../utils/img.constanst';
 
 interface ContainerPageComponentProps {
   children: React.ReactNode;
@@ -18,22 +18,22 @@ const ContainerPageComponent = ({children}: ContainerPageComponentProps) => {
     <View style={styles.container}>
       <View style={styles.header}>
         <Image
-          source={{uri: imgOnboarding.left}}
+          source={{uri: imgCloudinary.left}}
           style={styles.imgHeaderLeft}
         />
         <Image
-          source={{uri: imgOnboarding.right}}
+          source={{uri: imgCloudinary.right}}
           style={styles.imgHeaderRight}
         />
       </View>
       <View style={styles.children}>{children}</View>
       <View style={styles.footer}>
       <Image
-          source={{uri: imgOnboarding.left}}
+          source={{uri: imgCloudinary.left}}
           style={styles.imgBottomLeft}
         />
         <Image
-          source={{uri: imgOnboarding.right}}
+          source={{uri: imgCloudinary.right}}
           style={styles.imgBottomRight}
         />
       </View>

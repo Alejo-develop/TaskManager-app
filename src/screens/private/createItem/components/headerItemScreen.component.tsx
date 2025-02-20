@@ -1,5 +1,5 @@
 import {Image, StyleSheet, Text, View} from 'react-native';
-import {imgOnboarding} from '../../../../utils/img.constanst';
+import {imgCloudinary} from '../../../../utils/img.constanst';
 import {
   height,
   literataItalic,
@@ -33,10 +33,10 @@ const HeaderItemScreenComponent = ({itemType}: HeaderItemScreenProps) => {
         source={{
           uri:
             itemType === 'habit'
-              ? imgOnboarding.crown
+              ? imgCloudinary.crown
               : itemType === 'challenge'
-              ? imgOnboarding.mirror
-              : imgOnboarding.candle,
+              ? imgCloudinary.mirror
+              : imgCloudinary.candle,
         }}
       />
       <Text style={styles.text}>

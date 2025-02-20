@@ -1,5 +1,5 @@
 import {Image, ScrollView, Text, TouchableOpacity, View} from 'react-native';
-import {imgOnboarding} from '../../../utils/img.constanst';
+import {imgCloudinary} from '../../../utils/img.constanst';
 import {blueColor, redColor} from '../../../utils/style.constanst';
 import ButtonComponent from '../../../components/button/button.component';
 import SignUpHook from './hook/signUp.hook';
@@ -24,7 +24,7 @@ const SignUpScreen = () => {
       keyboardShouldPersistTaps="handled">
       <View style={styles.header}>
         <View style={{alignItems: 'center'}}>
-          <Image source={{uri: imgOnboarding.crown}} style={styles.img} />
+          <Image source={{uri: imgCloudinary.crown}} style={styles.img} />
           <Text style={styles.name}>
             <Text style={{color: redColor}}>Task</Text> Manager
           </Text>

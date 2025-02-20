@@ -10,7 +10,7 @@ import {
   width,
 } from '../../../../utils/style.constanst';
 import ButtonMenuComponent from './buttonMenu.component';
-import {imgOnboarding} from '../../../../utils/img.constanst';
+import {imgCloudinary} from '../../../../utils/img.constanst';
 import UseOptionMenu from '../hook/useOptionMenu.hook';
 import InfoUserModal from './infoUser.modal';
 
@@ -48,7 +48,7 @@ const MenuOptionComponent = () => {
               paddingBottom: 4,
             },
           ]}>
-          <Image source={{uri: imgOnboarding.angel}} style={styles.img} />
+          <Image source={{uri: imgCloudinary.angel}} style={styles.img} />
         </View>
       </View>
 

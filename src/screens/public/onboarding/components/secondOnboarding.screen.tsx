@@ -1,12 +1,12 @@
 import {Image, StyleSheet, Text} from 'react-native';
 import ContainerPageComponent from './container.component';
-import {imgOnboarding} from '../../../../utils/img.constanst';
+import {imgCloudinary} from '../../../../utils/img.constanst';
 import { blueColor, height, literataBold, redColor, width } from '../../../../utils/style.constanst';
 
 const SecondOnboardingScreen = () => {
   return (
     <ContainerPageComponent>
-      <Image source={{uri: imgOnboarding.mirror}} style={styles.img}/>
+      <Image source={{uri: imgCloudinary.mirror}} style={styles.img}/>
       <Text style={styles.text}>
         We know that to <Text style={{color: blueColor}}>achieve</Text> what we <Text style={{color: redColor}}>dream</Text> of, it
         takes more than just

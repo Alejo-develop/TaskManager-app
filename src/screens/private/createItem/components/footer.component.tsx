@@ -6,7 +6,7 @@ import {
   redColor,
   width,
 } from '../../../../utils/style.constanst';
-import {imgOnboarding} from '../../../../utils/img.constanst';
+import {imgCloudinary} from '../../../../utils/img.constanst';
 
 interface FooterCreateItemScreenComponentProps {
   itemType: string;
@@ -24,7 +24,7 @@ const FooterCreateItemScreenComponent = ({
         backgroundColor={redColor}
         onPress={onPress}
       />
-      <Image source={{uri: imgOnboarding.stamp}} style={styles.img} />
+      <Image source={{uri: imgCloudinary.stamp}} style={styles.img} />
     </View>
   );
 };

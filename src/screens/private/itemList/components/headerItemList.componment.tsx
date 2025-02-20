@@ -5,7 +5,7 @@ import {
   whiteColor,
   width,
 } from '../../../../utils/style.constanst';
-import {imgOnboarding} from '../../../../utils/img.constanst';
+import {imgCloudinary} from '../../../../utils/img.constanst';
 
 interface HeaderItemListProps {
   itemType: string;
@@ -48,10 +48,10 @@ const HeaderItemListComponent = ({
           source={{
             uri:
               itemType === 'Habits'
-                ? imgOnboarding.crown
+                ? imgCloudinary.crown
                 : itemType === 'Challenges'
-                ? imgOnboarding.mirror
-                : imgOnboarding.candle,
+                ? imgCloudinary.mirror
+                : imgCloudinary.candle,
           }}
         />
       </View>
