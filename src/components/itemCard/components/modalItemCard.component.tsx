@@ -131,7 +131,7 @@ const ModalItemCard = ({
           <ButtonComponent
             backgroundColor={redColor}
             text="Finished"
-            onPress={() => updateItem(form, onClose, itemType)}
+            onPress={() => updateItem(form, onClose, itemType, (data as Habit | Challenge).id)}
           />
 
           {isModalDateVisible && (
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
   },
   modal: {
     width: width * 0.87,
-    height: height * 0.83,
+    height: height * 0.86,
     backgroundColor: blueColor,
     elevation: 6,
     justifyContent: 'center',

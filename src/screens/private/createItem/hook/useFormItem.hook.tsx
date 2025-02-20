@@ -6,7 +6,7 @@ import {
   normalizeDate,
   validateDates,
   validateFrequency,
-} from '../../../../utils/function.utils';
+} from '../../../../utils/validateFunctions.utils';
 import {HabitController} from '../../../../../core/infrastructure/controllers/habit.controller';
 import {useSelector} from 'react-redux';
 import {RootState} from '../../../../redux/store';
@@ -17,7 +17,6 @@ import {ChallengeController} from '../../../../../core/infrastructure/controller
 import {PurposeController} from '../../../../../core/infrastructure/controllers/purpose.controller';
 
 const UseFormItem = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [date, setDate] = useState<Date>(new Date());
   const [endDate, setEndDate] = useState<Date>(new Date());
   const [isVisibleDatePicker, setIsVisibleDatePicker] =

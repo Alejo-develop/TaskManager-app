@@ -76,8 +76,14 @@ export class HabitRepositoryImp implements HabitRepository {
         const fields = Object.keys(data)
           .map(key => `${key} = ?`)
           .join(', ');
-        const values = Object.values(data);
 
+        const values = Object.values(data).map(value => {
+          if (value instanceof Date) {
+            return value.toISOString();
+          }
+          return value;
+        });
+  
         tx.executeSql(
           `UPDATE habits SET ${fields} WHERE id = ?`,
           [...values, habitId],

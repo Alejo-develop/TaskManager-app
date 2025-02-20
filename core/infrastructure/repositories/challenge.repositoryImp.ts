@@ -69,8 +69,9 @@ export class ChallengeRepositoryImp implements ChallengeRepository {
       });
     });
   }
+
   async updateChallenge(
-    challegeId: number,
+    challengeId: number,
     data: Partial<CreateChallengeRequest>,
   ): Promise<void> {
     return new Promise((resolve, reject) => {
@@ -78,11 +79,17 @@ export class ChallengeRepositoryImp implements ChallengeRepository {
         const fields = Object.keys(data)
           .map(key => `${key} = ?`)
           .join(', ');
-        const values = Object.values(data);
-
+  
+        const values = Object.values(data).map(value => {
+          if (value instanceof Date) {
+            return value.toISOString();
+          }
+          return value;
+        });
+  
         tx.executeSql(
           `UPDATE challenges SET ${fields} WHERE id = ?`,
-          [...values, challegeId],
+          [...values, challengeId],
           (_tx, result) => {
             if (result.rowsAffected > 0) {
               resolve();
@@ -97,6 +104,8 @@ export class ChallengeRepositoryImp implements ChallengeRepository {
       });
     });
   }
+  
+
   async deleteChallenge(challengeId: number): Promise<void> {
     return new Promise((resolve, reject) => {
       database.transaction(tx => {
