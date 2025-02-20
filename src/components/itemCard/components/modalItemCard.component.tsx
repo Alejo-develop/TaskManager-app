@@ -19,7 +19,10 @@ import ButtonComponent from '../../button/button.component';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import {Calendar} from 'react-native-calendars';
 import IconButtonComponent from '../../buttonIcon/buttonIcon.component';
-import { imgInProject } from '../../../utils/img.constanst';
+import {imgInProject} from '../../../utils/img.constanst';
+import DeleteModal from '../../deleteModal/deleteItem.modal';
+import {useState} from 'react';
+import UseDeleteItem from '../../deleteModal/hooks/useDeleteItem';
 
 interface ModalItemCardProps extends BaseModalProps {
   data: Habit | Challenge | {};
@@ -50,6 +53,9 @@ const ModalItemCard = ({
     endDate: (data as Habit | Challenge).endDate,
   });
 
+  const {isVisibleConfirmModal, setIsVisibleConfirmModal, deleteItem} =
+    UseDeleteItem();
+
   return (
     <Modal
       visible={isVisible}
@@ -61,10 +67,11 @@ const ModalItemCard = ({
           <View style={{flexDirection: 'row', gap: width * 0.1}}>
             <Text style={styles.name}>{(data as Habit | Challenge).name}</Text>
             <IconButtonComponent
-            height={'0.05'}
-            width={'0.09'}
-            img={imgInProject.trash}
-            backgroundColor={redColor}
+              height={'0.05'}
+              width={'0.09'}
+              img={imgInProject.trash}
+              backgroundColor={redColor}
+              onPress={() => setIsVisibleConfirmModal(true)}
             />
           </View>
 
@@ -136,6 +143,12 @@ const ModalItemCard = ({
               accentColor={redColor}
             />
           )}
+
+          <DeleteModal
+            isVisible={isVisibleConfirmModal}
+            onClose={() => setIsVisibleConfirmModal(false)}
+            onPress={() => deleteItem( itemType, (data as Habit | Challenge).id )}
+          />
         </View>
       </View>
     </Modal>
