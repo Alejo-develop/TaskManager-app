@@ -7,15 +7,16 @@ import {
   whiteColor,
   width,
 } from '../../utils/style.constanst';
-import {imgCloudinary} from '../../utils/img.constanst';
+import {imgCloudinary, imgInProject} from '../../utils/img.constanst';
 import UseLayout from './hook/useLayout.hook';
+import IconButtonComponent from '../buttonIcon/buttonIcon.component';
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 const LayoutComponent = ({children}: LayoutProps) => {
-  const {date} = UseLayout();
+  const {date, logOut} = UseLayout();
 
   return (
     <View style={styles.container}>
@@ -26,6 +27,14 @@ const LayoutComponent = ({children}: LayoutProps) => {
         </View>
         <View style={[styles.sectionHeaders, {paddingRight: 0}]}>
           <Text style={styles.date}>{date}</Text>
+        </View>
+        <View style={[{paddingRight: 0, justifyContent: 'center', right: 15}]}>
+          <IconButtonComponent
+            img={imgInProject.logOut}
+            height="0.03"
+            width="0.067"
+            onPress={logOut}
+          />
         </View>
       </View>
       <View style={styles.children}>{children}</View>
@@ -44,7 +53,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   sectionHeaders: {
-    width: width * 0.5,
+    width: width * 0.45,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',

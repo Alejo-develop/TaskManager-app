@@ -1,21 +1,12 @@
 import {View} from 'react-native';
-import {useDispatch} from 'react-redux';
-import ButtonComponent from '../../../components/button/button.component';
-import {redColor} from '../../../utils/style.constanst';
-import {clearSession} from '../../../redux/user.slice';
+import ItemsForTodaySliderContainer from './components/containerItemForToday.component';
+import ContainerItemsComponent from './components/containerItems.compontent';
 
 const HomeScreen = () => {
-  const dispatch = useDispatch();
-  const logOut = () => {
-    dispatch(clearSession());
-  };
   return (
     <View>
-      <ButtonComponent
-        text="Log Out"
-        backgroundColor={redColor}
-        onPress={logOut}
-      />
+      <ItemsForTodaySliderContainer />
+      <ContainerItemsComponent />
     </View>
   );
 };

@@ -1,8 +1,11 @@
 import {useEffect, useState} from 'react';
+import { useDispatch } from 'react-redux';
+import { clearSession } from '../../../redux/user.slice';
 
 const UseLayout = () => {
   const [date, setDate] = useState<string>('');
-
+  const dispatch = useDispatch();
+  
   const formatDate = (date_: Date): string => {
     const date = new Date(date_);
     const day = date.getDate();
@@ -20,12 +23,17 @@ const UseLayout = () => {
     setDate(formattedDate)
   };
 
+  const logOut = () => {
+    dispatch(clearSession());
+  };
+
   useEffect(() => {
     getDay()
   }, [date])
 
   return {
-    date
+    date,
+    logOut
   };
 };
 

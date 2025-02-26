@@ -18,5 +18,6 @@ export const imgCloudinary = {
 
 export const imgInProject = {
   trash: require('../assets/img/trash-icon.png'),
-  devil: require('../assets/img/eldiablo.png')
+  devil: require('../assets/img/eldiablo.png'),
+  logOut: require('../assets/img/log-out.png')
 }
