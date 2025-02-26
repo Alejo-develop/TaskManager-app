@@ -1,23 +1,48 @@
-import {useEffect, useState} from 'react';
+import {useCallback, useState} from 'react';
 import {Purpose} from '../../../../../core/domain/entities/purposes/purpose';
 import {Challenge} from '../../../../../core/domain/entities/challenges/challenge';
+import {PurposeController} from '../../../../../core/infrastructure/controllers/purpose.controller';
+import {useSelector} from 'react-redux';
+import {RootState} from '../../../../redux/store';
+import {ChallengeController} from '../../../../../core/infrastructure/controllers/challenge.controller';
+import {useFocusEffect} from '@react-navigation/native';
 
 const UseHome = () => {
   const [purposes, setPurposes] = useState<Purpose[]>([]);
   const [challenges, setChallenges] = useState<Challenge[]>([]);
-  const [numPurposes, setNumPurposes] = useState<number>(0);
-  const [numChallenges, setNumChallenges] = useState<number>(0);
+  const id = useSelector((state: RootState) => state.user.id);
 
-  const findPurposes = () => {};
+  const findPurposes = async () => {
+    try {
+      const purposes = await PurposeController.FindPurposesByAnyCategory(id);
 
-  const findChallenges = () => {};
+      setPurposes(purposes.slice(-3));
+      return;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  useEffect(() => {
-    findChallenges();
-    findPurposes();
-  });
+  const findChallenges = async () => {
+    try {
+      const challenges = await ChallengeController.FindChallengesByAnyCategory(
+        id,
+      );
 
-  return {purposes, challenges, numChallenges, numPurposes};
+      setChallenges(challenges.slice(-3));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useFocusEffect(
+    useCallback(() => {
+      findPurposes();
+      findChallenges();
+    }, []),
+  );
+
+  return {purposes, challenges};
 };
 
 export default UseHome;

@@ -12,7 +12,7 @@ const ItemsForTodaySliderContainer = () => {
 const styles = StyleSheet.create({
   container: {
     width: width * 1,
-    height: height * 0.35,
+    height: height * 0.38,
     backgroundColor: blueColor,
   },
 });
