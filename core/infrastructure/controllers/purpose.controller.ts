@@ -3,6 +3,7 @@ import {
   DeletePurpose,
   FindPurposes,
   updatePurpose,
+  FindPurposesByAnyCategory,
 } from '../../application/useCases/purpose.useCase';
 import {CreatePurposeRequest} from '../../domain/entities/purposes/request/createPurposeRequest';
 import {PurposeRepositoryImp} from '../repositories/purpose.repositoryImp';
@@ -22,6 +23,15 @@ export class PurposeController {
   static async FIndPurposes(userId: string, categoryId: string) {
     try {
       return await FindPurposes(purposeRepository, userId, categoryId);
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
+  static async FindPurposesByAnyCategory(userId: string) {
+    try {
+      return await FindPurposesByAnyCategory(purposeRepository, userId);
     } catch (error) {
       console.log(error);
       throw error;

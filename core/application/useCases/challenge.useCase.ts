@@ -17,6 +17,13 @@ export const FindChallenge = (
   return challengeRepository.findChallenge(userId, categoryId);
 };
 
+export const FindChallengesByAnyCategory = (
+  challengeRepository: ChallengeRepository,
+  userId: string,
+): Promise<Challenge[] | []> => {
+  return challengeRepository.findChallengesByAnyCategory(userId);
+};
+
 export const UpdateChallenge = (
   challengeRepository: ChallengeRepository,
   challengeId: number,

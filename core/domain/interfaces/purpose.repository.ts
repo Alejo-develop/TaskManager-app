@@ -4,6 +4,7 @@ import { CreatePurposeRequest } from "../entities/purposes/request/createPurpose
 export interface PurposeRepository {
   createPurpose(data: CreatePurposeRequest): Promise<void>;
   findPurposes(userId: string, categoryId: string): Promise<Purpose[] | []>;
+  findPurposesByAnyCategory(userId: string): Promise<Purpose[] | []>
   updatePurpose(purposeId: number, data: Partial<CreatePurposeRequest>): Promise<void>;
   deletePurpose(purposeId: number): Promise<void>;
 }

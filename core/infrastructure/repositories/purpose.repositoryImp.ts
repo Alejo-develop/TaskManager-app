@@ -56,6 +56,34 @@ export class PurposeRepositoryImp implements PurposeRepository {
     });
   }
 
+  async findPurposesByAnyCategory(userId: string): Promise<Purpose[] | []> {
+    return new Promise((resolve, reject) => {
+      database.transaction(tx => {
+        tx.executeSql(
+          'SELECT * FROM purposes WHERE userId = ?',
+          [userId],
+          (_tx, result) => {
+            const purposes: Purpose[] = [];
+            for (let i = 0; i < result.rows.length; i++) {
+              const row = result.rows.item(i);
+              purposes.push({
+                id: row.id,
+                userId: row.userId,
+                categoryId: row.categoryId,
+                name: row.name,
+                description: row.description,
+              });
+            }
+            resolve(purposes);
+          },
+          error => {
+            reject(error);
+          },
+        );
+      });
+    });
+  }
+
   async updatePurpose(
     purposeId: number,
     data: Partial<CreatePurposeRequest>,

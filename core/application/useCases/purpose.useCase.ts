@@ -17,6 +17,13 @@ export const FindPurposes = (
   return purposeRepository.findPurposes(userId, cateogryId);
 };
 
+export const FindPurposesByAnyCategory = (
+  purposeRepository: PurposeRepository,
+  userId: string,
+): Promise<Purpose[] | []> => {
+  return purposeRepository.findPurposesByAnyCategory(userId);
+};
+
 export const updatePurpose = (
   purposeRepository: PurposeRepository,
   purposeId: number,

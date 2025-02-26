@@ -4,6 +4,10 @@ import {CreateChallengeRequest} from '../entities/challenges/request/createCalle
 export interface ChallengeRepository {
   createChallenge(data: CreateChallengeRequest): Promise<void>;
   findChallenge(userId: string, categoryId: string): Promise<Challenge[] | []>;
-  updateChallenge(challegeId: number, data: Partial<CreateChallengeRequest>): Promise<void>;
+  findChallengesByAnyCategory(userId: string): Promise<Challenge[] | []>;
+  updateChallenge(
+    challegeId: number,
+    data: Partial<CreateChallengeRequest>,
+  ): Promise<void>;
   deleteChallenge(challengeId: number): Promise<void>;
 }

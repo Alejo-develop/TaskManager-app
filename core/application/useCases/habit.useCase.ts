@@ -10,12 +10,19 @@ export const CreateHabit = (
 };
 
 export const FindHabits = (
-  findHabitRepository: HabitRepository,
+  habitRepository: HabitRepository,
   userId: string,
   categoryId: string
 ): Promise<Habit[] | []> => {
-  return findHabitRepository.findHabits(userId, categoryId);
+  return habitRepository.findHabits(userId, categoryId);
 };
+
+export const FindHabitsByAnyCategory = (
+  habitRepository: HabitRepository,
+  userId: string,
+): Promise<Habit[] | []>  => {
+  return habitRepository.findHabitsByAnyCategory(userId)
+}
 
 export const UpdateHabit = (
   habitRepository: HabitRepository,

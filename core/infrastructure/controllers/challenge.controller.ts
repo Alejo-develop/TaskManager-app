@@ -3,6 +3,7 @@ import {
   DeleteChallenge,
   FindChallenge,
   UpdateChallenge,
+  FindChallengesByAnyCategory,
 } from '../../application/useCases/challenge.useCase';
 import {CreateChallengeRequest} from '../../domain/entities/challenges/request/createCallengeRequest';
 import {ChallengeRepositoryImp} from '../repositories/challenge.repositoryImp';
@@ -22,6 +23,15 @@ export class ChallengeController {
   static async FindChallenges(userId: string, categoryId: string) {
     try {
       return await FindChallenge(challengeRepository, userId, categoryId);
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
+  static async FindChallengesByAnyCategory(userId: string) {
+    try {
+      return await FindChallengesByAnyCategory(challengeRepository, userId);
     } catch (error) {
       console.log(error);
       throw error;

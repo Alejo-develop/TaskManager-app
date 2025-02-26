@@ -67,6 +67,38 @@ export class HabitRepositoryImp implements HabitRepository {
     });
   }
 
+  async findHabitsByAnyCategory(userId: string): Promise<Habit[] | []> {
+    return new Promise((resolve, reject) => {
+      database.transaction(tx => {
+        tx.executeSql(
+          'SELECT * FROM habits WHERE userId = ?',
+          [userId],
+          (_tx, result) => {
+            const habits: Habit[] = [];
+            for (let i = 0; i < result.rows.length; i++) {
+              const row = result.rows.item(i);
+              habits.push({
+                id: row.id,
+                userId: row.userId,
+                categoryId: row.categoryId,
+                name: row.name,
+                description: row.description,
+                frequency: row.frequency,
+                startDate: row.startDate,
+                endDate: row.endDate,
+                streak: row.streak,
+              });
+            }
+            resolve(habits);
+          },
+          error => {
+            reject(error);
+          },
+        );
+      });
+    });
+  }
+
   async updateHabit(
     habitId: number,
     data: Partial<CreateHabitRequest>,
@@ -83,7 +115,7 @@ export class HabitRepositoryImp implements HabitRepository {
           }
           return value;
         });
-  
+
         tx.executeSql(
           `UPDATE habits SET ${fields} WHERE id = ?`,
           [...values, habitId],

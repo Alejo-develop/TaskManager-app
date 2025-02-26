@@ -3,6 +3,7 @@ import {
   FindHabits,
   UpdateHabit,
   DelteHabit,
+  FindHabitsByAnyCategory,
 } from '../../application/useCases/habit.useCase';
 import {CreateHabitRequest} from '../../domain/entities/habits/request/createHabitRequest';
 import {HabitRepositoryImp} from '../repositories/habit.repositoryImp';
@@ -22,6 +23,15 @@ export class HabitController {
   static async FindHabits(userId: string, categoryId: string) {
     try {
       return await FindHabits(habitRepository, userId, categoryId);
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
+  static async FindHabitsByAnyCategory(userId: string) {
+    try {
+      return await FindHabitsByAnyCategory(habitRepository, userId);
     } catch (error) {
       console.log(error);
       throw error;
